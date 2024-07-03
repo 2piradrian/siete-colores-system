@@ -11,7 +11,7 @@ type Props = {
 export default function NavRoutes({ state }: Props) {
 	return (
 		<div className={style.routes}>
-			<NavItem icon={<AiFillHome />} name="Home" route="/" state={state} />
+			<NavItem icon={<AiFillHome />} name="Inicio" route="/" state={state} />
 			<NavItem icon={<FaSearch />} name="Productos" route="/products" state={state} />
 			<NavItem icon={<FaBookMedical />} name="Presupuestar" route="/budgets" state={state} />
 			<NavItem icon={<FaBook />} name="Presupuestos" route="/allbudgets" state={state} />
