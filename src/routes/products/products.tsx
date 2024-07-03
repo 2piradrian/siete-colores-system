@@ -1,15 +1,14 @@
-import Title from "../../components/atoms/title/title";
 import AppLayout from "../../layout/app-layout";
+import ContainerLayout from "../../layout/container-layout";
 
 export default function Products() {
     return (
         <AppLayout>
-            <div className="container">
-                <Title title="Productos" />
-                <div className="subcontainer">
-                    <p>Productos</p>
-                </div>
-            </div>
+            <ContainerLayout title="Productos">
+                {/* <SearchProducts />
+                <ProductsList /> */}
+                Productos
+            </ContainerLayout>
         </AppLayout>
     );
 }
