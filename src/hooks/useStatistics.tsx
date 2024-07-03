@@ -1,10 +1,9 @@
-import { AxiosResponse } from "axios";
-import { Statistics } from "@/types/types";
-import { instance } from "@/adapters/instance";
 import { useEffect, useState } from "react";
+import { Statistics } from "../types/types";
+import HTTPClient from "../adapters/http-client";
 
 function useStatistics() {
-
+    const httpClient = new HTTPClient();
 	const [statistics, setStatistics] = useState<Statistics | undefined>();
 
 	useEffect(() => {
@@ -13,8 +12,7 @@ function useStatistics() {
 
 	const fetchStatistics = async () => {
 		try {
-			const response: AxiosResponse<Statistics> = await instance.get("/statistics/");
-			return response.data;
+            return await httpClient.get("/statistics");;
 		} 
 		catch (error) {
 			alert("Error al cargar las estadísticas: " + error);
