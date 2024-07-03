@@ -10,12 +10,13 @@ export default class HTTPClient {
         this.secret = env.API_SECRET!!;
     }
 
-    public async get(url: string) {
+    public async get(url: string, params?: any) {
         try {
             const response = await axios.get(this.baseURL + url, {
                 headers: {
                     Authorization: this.secret
-                }
+                },
+                params: params
             });
             return response.data;
         }
@@ -25,9 +26,9 @@ export default class HTTPClient {
         }
     }
 
-    public async post(url: string, data: any) {
+    public async post(url: string, params?: any) {
         try {
-            const response = await axios.post(this.baseURL + url, data, {
+            const response = await axios.post(this.baseURL + url, params, {
                 headers: {
                     Authorization: this.secret
                 }
@@ -40,12 +41,13 @@ export default class HTTPClient {
         }
     }
 
-    public async put(url: string, data: any) {
+    public async put(url: string, params?: any) {
         try {
-            const response = await axios.put(this.baseURL + url, data, {
+            const response = await axios.put(this.baseURL + url, params, {
                 headers: {
                     Authorization: this.secret
-                }
+                },
+                params: params
             });
             return response.data;
         }
@@ -55,7 +57,7 @@ export default class HTTPClient {
         }
     }
 
-    public async delete(url: string) {
+    public async delete(url: string, params?: any) {
         try {
             const response = await axios.delete(this.baseURL + url, {
                 headers: {
