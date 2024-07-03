@@ -1,6 +1,4 @@
-import 'dotenv/config';
-
 export const env = {
-    API_SECRET: process.env.API_SECRET,
-    BASE_URL: process.env.BASE_URL,
+    API_SECRET: import.meta.env.VITE_API_SECRET,
+    BASE_URL: import.meta.env.VITE_BASE_URL,
 }
