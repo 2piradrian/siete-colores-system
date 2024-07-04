@@ -2,6 +2,7 @@ import { allProducts } from "../../../data-structures/tables";
 import { Product } from "../../../types/types";
 import ProductsTable from "../../molecules/products-table/products-table";
 import ProductForm from "../../molecules/product-form/product-form";
+import FAButton from "../../atoms/fa-button/fa-button";
 import style from "./style.module.css";
 
 type Props = {
@@ -18,7 +19,7 @@ type Props = {
 };
 
 export default function ProductsList(props: Props) {
-    const {product, products, onClick, createProduct, deleteProduct, updateProduct, openUpdate, setOpenUpdate ,openCreate, setOpenCreate} = props;
+    const {product, products, onClick, createProduct, deleteProduct, updateProduct, openUpdate, setOpenUpdate, openCreate, setOpenCreate} = props;
     
     return (
         <div className={style.container}>
@@ -43,6 +44,7 @@ export default function ProductsList(props: Props) {
 					onSubmit={createProduct} 
 					onDelete={deleteProduct} />
 			)}
+			<FAButton content="+" onClick={() => setOpenCreate(true)} />
         </div>
     );
 }

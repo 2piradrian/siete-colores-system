@@ -62,7 +62,8 @@ export default class HTTPClient {
             const response = await axios.delete(this.baseURL + url, {
                 headers: {
                     Authorization: this.secret
-                }
+                },
+                params: params
             });
             return response.data;
         }

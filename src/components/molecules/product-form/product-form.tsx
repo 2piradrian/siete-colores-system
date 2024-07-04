@@ -35,7 +35,7 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
     }
 
     const handleDelete = () => {
-        onDelete(formData?.code as string);
+        onDelete(formData?.code || "");
         setOpen(false);
     }
 
@@ -48,33 +48,33 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     label="Código" 
                     placeholder="A236" 
                     type="text" 
-                    value={formData?.code} 
+                    value={formData?.code || ""} 
                     />
                 <InputLabel 
                     id="name" 
                     label="Nombre" 
                     placeholder="LETRA CURSIVA" 
                     type="text" 
-                    value={formData?.name} 
+                    value={formData?.name || ""} 
                     />
                 <SelectLabel
                     id="category" 
                     label="Categoría" 
-                    value={formData?.category} 
+                    value={formData?.category || ""} 
                     />
                 <InputLabel 
                     id="size" 
                     placeholder="15mm x 15mm" 
                     label="Tamaño" 
                     type="text" 
-                    value={formData?.size} 
+                    value={formData?.size || ""} 
                     />
                 <InputLabel 
                     id="price" 
                     placeholder="3090.50" 
                     label="Precio" 
                     type="number" 
-                    value={formData?.price.toString()} 
+                    value={formData?.price?.toString() || ""} 
                     />
                 <div className={style.buttonContainer}>
                     <MainButton text={empty? "Crear" : "Actualizar"} type="submit"/>
