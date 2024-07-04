@@ -15,7 +15,7 @@ export default function ProductsList({ products, onClick }: Props) {
             <ProductsTable 
                 table={allProducts}
                 products={products} 
-                onClick={onClick} 
+                onClick={onClick}
             />
         </div>
     );
