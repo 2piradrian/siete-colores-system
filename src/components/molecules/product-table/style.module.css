@@ -1,0 +1,29 @@
+.table {
+    width: 100%;
+	border-collapse: collapse;
+	user-select: none;
+	overflow-x: hidden;
+}
+
+.tableCell {
+	padding: 8px;
+	border-bottom: 1px solid #ccc;
+	user-select: none;
+	overflow-x: hidden;
+}
+
+.tableRow {
+	height: 45px;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	user-select: none;
+	overflow-x: hidden;
+}
+
+.tableRow:hover {
+	transform: scale(1.02);
+	font-weight: 700;
+	position: relative;
+	user-select: none;
+	overflow-x: hidden;
+}
