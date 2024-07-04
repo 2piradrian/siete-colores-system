@@ -1,5 +1,6 @@
 import { BudgetProduct, Product } from "../../../types/types";
 import TableHeader from "../../atoms/table-header/table-header";
+import TableRow from "../../atoms/table-row/table-row";
 import style from "./style.module.css";
 
 type Props = {
@@ -14,17 +15,11 @@ export default function ProductTable({ products, table, onClick }: Props) {
 			<TableHeader params={table[0]} />
 			<tbody>
 				{products.map((product) => (
-					<tr
-						className={style.tableRow}
-						key={product.code}
-						onClick={() => onClick(product.code)}
-					>
-						{table[1].map((content, index) => (
-							<td className={style.tableCell} key={index}>
-								{(product as Product & BudgetProduct)[content as keyof (Product & BudgetProduct)]}
-							</td>
-						))}
-					</tr>
+					<TableRow 
+						content={table[1]} 
+						onClick={() => onClick(product.code)} 
+						key={product.code} 
+					/>
 				))}
 			</tbody>
 		</table>
