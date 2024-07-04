@@ -5,11 +5,11 @@ import style from "./style.module.css";
 
 type Props = {
 	products: Product[] | BudgetProduct[];
+	table: string[][];
 	onClick: (code: string) => void;
 };
 
-export default function ProductsTable({ products, onClick }: Props) {
-	const table = [["Codigo", "Nombre", "Categoria", "Precio"], ["code", "name", "category", "price"]];
+export default function ProductsTable({ products, onClick, table }: Props) {
 	
 	return (
 		<table className={style.table}>
