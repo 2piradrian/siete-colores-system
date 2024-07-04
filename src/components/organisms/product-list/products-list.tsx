@@ -1,10 +1,15 @@
-import useProducts from "../../../hooks/useProducts";
+import { Product } from "../../../types/types";
+import ProductTable from "../../molecules/products-table/products-table";
 
-export default function ProductsList() {
-    const { products } = useProducts();
+type Props = {
+    products: Product[];
+};
+
+export default function ProductsList({ products }: Props) {
     
     return (
         <div>
+            <ProductTable products={products} />
             {products.map(product => (
                 <div key={product.code}>
                     <h2>{product.name}</h2>
