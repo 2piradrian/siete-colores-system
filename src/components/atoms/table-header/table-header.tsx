@@ -6,7 +6,7 @@ type Props = {
 
 export default function TableHeader({params}: Props){
     return (
-        <thead>
+        <thead className={style.header}>
             <tr>
                 {params.map((header, index) => (
                     <th className={style.tableHeader} key={index}>{header}</th>
