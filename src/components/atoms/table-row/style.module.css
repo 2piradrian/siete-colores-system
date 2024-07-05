@@ -1,4 +1,5 @@
 .tableCell {
+	height: 55px;
 	padding: 8px;
 	border-bottom: 1px solid #ccc;
 	user-select: none;
@@ -7,7 +8,7 @@
 
 .tableRow {
 	height: 45px;
-	transition: all 0.3s ease;
+	transition: all 0.2s ease;
 	cursor: pointer;
 	user-select: none;
 	overflow-x: hidden;
