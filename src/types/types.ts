@@ -12,6 +12,8 @@ export type Budget = {
 	client: string;
 	date: Date;
 	products: BudgetProduct[];
+	subtotal: number;
+	discount: number;
 	total: number;
 };
 
