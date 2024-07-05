@@ -18,6 +18,9 @@ export default class HTTPClient {
                 },
                 params: params
             });
+            if (!response.data) {
+                throw new Error(response.data.message)
+            }
             return response.data;
         }
         catch (error) {
@@ -33,6 +36,9 @@ export default class HTTPClient {
                     Authorization: this.secret
                 }
             });
+            if (!response.data) {
+                throw new Error(response.data.message)
+            }
             return response.data;
         }
         catch (error) {
@@ -49,6 +55,9 @@ export default class HTTPClient {
                 },
                 params: params
             });
+            if (!response.data) {
+                throw new Error(response.data.message)
+            }
             return response.data;
         }
         catch (error) {
@@ -65,6 +74,9 @@ export default class HTTPClient {
                 },
                 params: params,
             });
+            if (!response.data) {
+                throw new Error(response.data.message)
+            }
             return response.data;
         }
         catch (error) {
