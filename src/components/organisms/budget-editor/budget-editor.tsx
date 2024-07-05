@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { budgetProducts, reducedProducts } from "../../../data-structures/tables";
 import ProductsTable from "../../molecules/products-table/products-table";
 import { Budget, Product } from "../../../types/types";
+import FAButton from "../../atoms/fa-button/fa-button";
 import style from "./style.module.css";
 
 type Props = {
@@ -42,13 +43,7 @@ export default function BudgetEditor({ products, budget, addProduct, subtractPro
 					<ProductsTable products={budget.products} table={budgetProducts} onClick={(code: string) => subtractProduct(code)} />
 				</div>
 			</div>
-			<div
-				className={style.createButton}
-				onClick={() => {
-					createBudget();
-				}}>
-				+
-			</div>			
+			<FAButton content="+" onClick={() => {createBudget()}}/>		
 		</section>
 	);
 }

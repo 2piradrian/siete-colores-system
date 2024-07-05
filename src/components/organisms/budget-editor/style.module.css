@@ -36,29 +36,12 @@
 	max-width: 800px;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
 	align-items: center;
 	position: relative;
 	overflow-y: scroll;
 	scroll-behavior: smooth;
 	overflow-x: hidden;
 }
-
-.preform {
-	height: auto;
-	width: 300px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-.total {
-	font-size: 28px;
-	font-weight: 700;
-	margin: 10px;
-}
-
 .createButton {
 	height: 50px;
 	width: 50px;
