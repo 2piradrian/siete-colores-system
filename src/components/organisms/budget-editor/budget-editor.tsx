@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { budgetProducts, reducedProducts } from "../../../data-structures/tables";
 import ProductsTable from "../../molecules/products-table/products-table";
 import { Budget, Product } from "../../../types/types";
@@ -36,7 +36,7 @@ export default function BudgetEditor({ products, budget, addProduct, subtractPro
 					<ProductsTable products={budget.products} table={budgetProducts} onClick={(code: string) => subtractProduct(code)} />
 				</div>
 			</div>
-			<FAButton content="+" onClick={() => {createBudget()}}/>		
+			<FAButton content="+" onClick={createBudget}/>		
 		</section>
 	);
 }
