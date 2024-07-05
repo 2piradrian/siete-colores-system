@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './styles/global.css'
 import Home from './routes/home/home'
 import Products from './routes/products/products'
 import Budget from './routes/budget/budget'
+import Budgets from './routes/budgets/budgets'
+import './styles/global.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<Home />}/>
         <Route path="/products" element={<Products />}/>
         <Route path="/budget" element={<Budget />}/>
+        <Route path="/budgets" element={<Budgets />}/>
       </Routes>    
     </BrowserRouter>
   </React.StrictMode>,

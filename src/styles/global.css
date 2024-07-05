@@ -19,8 +19,7 @@ body {
 	justify-content: center;
 	width: 100%;
 	background-color: var(--background);
-	overflow: scroll;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 html * {
