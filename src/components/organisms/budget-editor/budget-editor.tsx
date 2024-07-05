@@ -17,13 +17,6 @@ type Props = {
 export default function BudgetEditor({ products, budget, addProduct, subtractProduct, getAmount, createBudget }: Props) {
 
 	const [ammount, setAmmount] = useState({subtotal: 0, total: 0});
-	const budgetTableRef = useRef<HTMLDivElement | null>(null);
-
-	useEffect(() => {
-		if (budgetTableRef.current) {
-			budgetTableRef.current.scrollTop = budgetTableRef.current.scrollHeight;
-		}
-	}, [budget.products]);
 
 	useEffect(() => {
 		setAmmount(getAmount());
@@ -36,10 +29,10 @@ export default function BudgetEditor({ products, budget, addProduct, subtractPro
 				<p>Total: $ {ammount.total}</p>
 			</div>
 			<div className={style.tablesContainer}>
-				<div className={style.table}>
+				<div className={style.tableContainer}>
 					<ProductsTable products={products} table={reducedProducts} onClick={(code: string) => addProduct(code)} />
 				</div>
-				<div className={style.table} ref={budgetTableRef}>
+				<div className={style.tableContainer}>
 					<ProductsTable products={budget.products} table={budgetProducts} onClick={(code: string) => subtractProduct(code)} />
 				</div>
 			</div>
