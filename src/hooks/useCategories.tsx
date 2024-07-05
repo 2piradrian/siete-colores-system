@@ -42,7 +42,11 @@ export default function useCategories(){
 
     const deleteCategory = async (name: string) => {
         try {
-            await httpClient.delete("/categories/delete", { data: { name }});
+            const response = confirm("¿Estás seguro de que quieres eliminar la categoría " + name + "?");
+            if (!response) {
+                return;
+            }
+            await httpClient.delete("/categories/delete", { name });
             alert("Categoría eliminada con éxito");
 
             fetchCategories();

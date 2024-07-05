@@ -63,7 +63,7 @@ export default class HTTPClient {
                 headers: {
                     Authorization: this.secret
                 },
-                params: params
+                params: params,
             });
             return response.data;
         }

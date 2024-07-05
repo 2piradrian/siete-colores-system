@@ -15,8 +15,7 @@
 }
 
 .tableRow:hover {
-	transform: scale(1.02);
-	font-weight: 700;
+	font-weight: 800;
 	position: relative;
 	user-select: none;
 	overflow-x: hidden;

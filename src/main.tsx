@@ -8,6 +8,7 @@ import Budgets from './routes/budgets/budgets'
 import BudgetDetail from './routes/budget-detail/budget-detail'
 import './styles/global.css'
 import Percent from './routes/percent/percent'
+import Categories from './routes/categories/categories'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/budgets" element={<Budgets />}/>
         <Route path="/budget-detail/:id" element={<BudgetDetail />}/>
         <Route path="/percents" element={<Percent />}/>
+        <Route path="/categories" element={<Categories />}/>
       </Routes>    
     </BrowserRouter>
   </React.StrictMode>,
