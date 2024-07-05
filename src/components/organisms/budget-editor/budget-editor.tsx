@@ -26,7 +26,7 @@ export default function BudgetEditor({ products, budget, addProduct, subtractPro
 
 	useEffect(() => {
 		setAmmount(getAmount());
-	}, [budget.products]);
+	}, [budget.products, budget.discount]);
 
 	return (
 		<section className={style.container}>
