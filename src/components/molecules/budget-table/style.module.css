@@ -1,0 +1,6 @@
+.productTable {
+	width: 98%;
+	border-collapse: collapse;
+	position: absolute;
+	user-select: none;
+}
