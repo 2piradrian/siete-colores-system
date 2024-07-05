@@ -13,6 +13,7 @@ export default function PrintTable({ budget }: Props) {
 	const navigate = useNavigate();
 
 	const { id, products, subtotal, discount, total } = budget as Budget;
+	const discountUI = discount ? discount : "--";
 
 	const handlePrint = () => {
 		window.print();
@@ -36,7 +37,7 @@ export default function PrintTable({ budget }: Props) {
 				</div>
 				<div>
 					<p>Descuento:</p>
-					<p>{discount}%</p>
+					<p>{discountUI}%</p>
 				</div>
 				<div>
 					<p>Total:</p>
