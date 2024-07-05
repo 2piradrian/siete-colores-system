@@ -1,0 +1,12 @@
+.hr {
+	width: 60%;
+	border: 1px solid var(--contrast);
+	opacity: 0.2;
+	margin: 20px 0px;
+}
+
+.title {
+	font-size: 28px;
+	font-weight: 800;
+	margin-bottom: 20px;
+}

@@ -16,7 +16,7 @@ export default function NavRoutes({ state }: Props) {
 			<NavItem icon={<FaBookMedical />} name="Presupuestar" route="/budget" state={state} />
 			<NavItem icon={<FaBook />} name="Presupuestos" route="/budgets" state={state} />
 			<NavItem icon={<FaClipboardList />} name="Categorias" route="/categories" state={state} />
-			<NavItem icon={<FaPercent />} name="Porcentaje" route="/percent" state={state} />
+			<NavItem icon={<FaPercent />} name="Porcentaje" route="/percents" state={state} />
 		</div>
 	);
 }
