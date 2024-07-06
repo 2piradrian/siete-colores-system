@@ -18,14 +18,11 @@ export default class HTTPClient {
                 },
                 params: params
             });
-            if (!response.data) {
-                throw new Error(response.data.message)
-            }
+
             return response.data;
         }
-        catch (error) {
-            console.error("Error fetching data: " + error);
-            return error; 
+        catch (error: any) {
+            throw new Error(error.response.data.error);
         }
     }
 
@@ -36,14 +33,11 @@ export default class HTTPClient {
                     Authorization: this.secret
                 }
             });
-            if (!response.data) {
-                throw new Error(response.data.message)
-            }
+
             return response.data;
         }
-        catch (error) {
-            console.error("Error posting data: " + error);
-            return error;
+        catch (error: any) {
+            throw new Error(error.response.data.error);
         }
     }
 
@@ -55,14 +49,11 @@ export default class HTTPClient {
                 },
                 params: params
             });
-            if (!response.data) {
-                throw new Error(response.data.message)
-            }
+
             return response.data;
         }
-        catch (error) {
-            console.error("Error putting data: " + error);
-            return error;
+        catch (error: any) {
+            throw new Error(error.response.data.error);
         }
     }
 
@@ -74,14 +65,11 @@ export default class HTTPClient {
                 },
                 params: params,
             });
-            if (!response.data) {
-                throw new Error(response.data.message)
-            }
+            
             return response.data;
         }
-        catch (error) {
-            console.error("Error deleting data: " + error);
-            return error;
+        catch (error: any) {
+            throw new Error(error.response.data.error);
         }
     }
 };
