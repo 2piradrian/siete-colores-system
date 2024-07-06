@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { StrictMode } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import ReactDOM from 'react-dom/client'
 import Home from './routes/home/home'
 import Products from './routes/products/products'
 import Budget from './routes/budget/budget'
@@ -11,7 +11,7 @@ import Percent from './routes/percent/percent'
 import Categories from './routes/categories/categories'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}/>
@@ -23,5 +23,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/categories" element={<Categories />}/>
       </Routes>    
     </BrowserRouter>
-  </React.StrictMode>,
+  </StrictMode>,
 )
