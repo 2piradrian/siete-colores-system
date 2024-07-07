@@ -31,6 +31,8 @@ export default function useBudget() {
 			if (budget.products.length === 0 || !budget.client) {
 				throw new Error("No se puede crear un presupuesto sin productos o cliente");
 			}
+
+			alert("Creando presupuesto...")
 			await httpClient.post("/budgets/create", { products: budget.products, client: budget.client, discount: budget.discount });
 			
 			alert("Presupuesto creado con éxito");
