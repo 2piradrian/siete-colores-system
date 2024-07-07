@@ -3,6 +3,7 @@ import { Budget } from "../../../types/types";
 import useBudget from "../../../hooks/useBudget";
 import BudgetTable from "../../molecules/budget-table/budget-table";
 import style from "./style.module.css";
+import MainButton from "../../atoms/main-button/main-button";
 
 type Props = {
 	budget: Budget | undefined;
@@ -44,11 +45,9 @@ export default function PrintTable({ budget }: Props) {
 					<p>${total}</p>
 				</div>
 			</div>
-			<div className={style.button} onClick={handleDelete}>
-				Borrar
-			</div>
-			<div className={style.button} onClick={handlePrint}>
-				Imprimir
+			<div className={style.buttonContainer}>
+				<MainButton onClick={handlePrint} text="Imprimir" type="button" />
+				<MainButton onClick={handleDelete} text="Borrar" type="button" />
 			</div>
 		</div>
 	);

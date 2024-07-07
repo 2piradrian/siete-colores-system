@@ -41,27 +41,30 @@
 	font-weight: 700;
 }
 
-.button {
-	width: 200px;
-	height: 40px;
-	padding: 10px;
-	border-radius: 8px;
-	outline: none;
-	border: 0px;
-	margin: 10px;
-	background-color: var(--main);
-	border: 2px solid var(--main);
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.buttonContainer {
+	width: 300px;
 }
 
 @media print {
+	* {
+		height: auto !important;
+		overflow: hidden !important;
+		border: 1px solid black;
+	}
+
+	button {
+		display: none;
+	}
+
+	@page {
+		size: A4;
+		margin: 200mm 0;
+	}
+
 	.tableContainer {
 		padding: 50px 20px;
 		justify-content: flex-start;
-		page-break-after: always;
+		page-break-after: auto;
 		overflow: visible;
 	}
 	.button {
@@ -69,9 +72,5 @@
 	}
 	.total {
 		margin: 50px 30px;
-	}
-	@page {
-		size: A4;
-		margin: 200mm 0;
 	}
 }
