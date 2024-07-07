@@ -32,7 +32,7 @@ export default function useBudget() {
 				throw new Error("No se puede crear un presupuesto sin productos o cliente");
 			}
 
-			alert("Creando presupuesto...")
+			alert("Creando presupuesto...");
 			await httpClient.post("/budgets/create", { products: budget.products, client: budget.client, discount: budget.discount });
 			
 			alert("Presupuesto creado con éxito");
