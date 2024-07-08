@@ -46,6 +46,15 @@ export default function useBudget() {
 		try {
 			const response = await httpClient.get("/budgets/get-by-id", { id });
 
+			// Ordenar productos por código
+			const products = response.products
+			const sortedProducts = products.sort((a: { code: string }, b: { code: string }) => {
+				if (a.code < b.code) return -1;
+				if (a.code > b.code) return 1;
+				return 0;
+			});
+			response.products = sortedProducts;
+
 			return response;
 		}
 		catch (error) {
