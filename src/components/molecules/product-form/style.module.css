@@ -1,6 +1,7 @@
 .container {
 	width: 100vw;
 	height: 100vh;
+	padding: 20px;
 	position: fixed;
 	display: flex;
 	flex-direction: column;
@@ -13,9 +14,9 @@
 }
 
 .form {
-	height: 500px;
+	height: 600px;
 	width: 1000px;
-	padding: 20px;
+	padding: 40px 20px;
 	background: var(--background);
 	border-radius: 15px;
 	display: flex;
@@ -23,6 +24,14 @@
 	align-items: center;
 	justify-content: center;
 	position: relative;
+}
+
+.form input, .form select {
+	width: 500px;
+}
+
+.form label {
+	margin: 2px 0px;
 }
 
 .buttonContainer {

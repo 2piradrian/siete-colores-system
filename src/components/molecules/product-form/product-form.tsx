@@ -25,12 +25,15 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
         e.preventDefault();
         const product = Object.fromEntries(new FormData(e.currentTarget));
 
+        const keywords = (product.keywords as string).split(" ").map((keyword: string) => keyword.trim()).flat();
+
         onSubmit({
             code: product.code as string,
             name: product.name as string,
-            category: product.category as string,
             size: product.size as string,
             price: Number(product.price),
+            category: product.category as string,
+            keywords: keywords
         }).then(() => {setOpen(false)});
     }
 
@@ -49,6 +52,7 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     placeholder="A236" 
                     type="text" 
                     value={formData?.code || ""} 
+                    required
                     />
                 <InputLabel 
                     id="name" 
@@ -56,11 +60,7 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     placeholder="LETRA CURSIVA" 
                     type="text" 
                     value={formData?.name || ""} 
-                    />
-                <SelectLabel
-                    id="category" 
-                    label="Categoría" 
-                    value={formData?.category || ""} 
+                    required
                     />
                 <InputLabel 
                     id="size" 
@@ -68,6 +68,7 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     label="Tamaño" 
                     type="text" 
                     value={formData?.size || ""} 
+                    required
                     />
                 <InputLabel 
                     id="price" 
@@ -75,6 +76,20 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     label="Precio" 
                     type="number" 
                     value={formData?.price?.toString() || ""} 
+                    required
+                    />
+                <SelectLabel
+                    id="category" 
+                    label="Categoría" 
+                    value={formData?.category || ""} 
+                    />
+                <InputLabel 
+                    id="keywords"
+                    label="Palabras clave"
+                    placeholder="cursiva letra sello"
+                    type="text"
+                    value={formData?.keywords?.join(" ") || ""}
+                    required
                     />
                 <div className={style.buttonContainer}>
                     <MainButton text={empty? "Crear" : "Actualizar"} type="submit"/>

@@ -15,7 +15,7 @@ export default function SearchProducts({ setSearch }: Props) {
 
 	return (
 		<form onSubmit={handleSubmit} className={style.container}>
-			<InputLabel id="search" label="Buscar producto" placeholder="Tigre" type="text" />
+			<InputLabel id="search" label="Buscar producto" placeholder="Tigre" type="text" required={false} />
 		</form>
 	);
 }

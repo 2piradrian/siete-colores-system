@@ -6,10 +6,11 @@ type Props = {
     type: "text" | "number";
     label: string;
     placeholder: string;
+    required: boolean;
     value?: string | undefined;
 }
 
-export default function InputLabel({label, type, placeholder, id, value}: Props){
+export default function InputLabel({label, type, placeholder, id, required, value}: Props){
     const [self, setSelf] = useState<string | undefined>("" || value)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +20,7 @@ export default function InputLabel({label, type, placeholder, id, value}: Props)
     return(
         <div className={style.container}>
             <label htmlFor={id}>{label}</label>
-		    <input type={type} placeholder={placeholder} name={id} id={id} value={self} onChange={handleChange} />
+		    <input type={type} placeholder={placeholder} name={id} id={id} value={self} onChange={handleChange} required={required} />
         </div>
     )
 }

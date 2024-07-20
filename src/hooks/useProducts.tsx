@@ -28,6 +28,7 @@ export default function useProducts() {
             return (
                 product.name.toLowerCase().includes(search.toLowerCase()) ||
                 product.code.toLowerCase().includes(search.toLowerCase()) ||
+                product.keywords.includes(search.toLowerCase())           ||
                 product.category.toLowerCase().includes(search.toLowerCase())
             );
         });
@@ -58,9 +59,6 @@ export default function useProducts() {
 
     const createProduct = async (product: Product) => {
 		try {
-			if (!product.name || !product.code || !product.size || !product.category || !product.price) {
-				throw new Error("Rellena todos los campos");
-			}
 			if (products.find((p) => p.code === product.code)) {
 				throw new Error("El código ya existe");
 			}
@@ -74,9 +72,6 @@ export default function useProducts() {
 	};
 
     const updateProduct = async (product: Product) => {
-		if (!product.name || !product.code || !product.size || !product.category || !product.price) {
-			throw new Error("Rellena todos los campos");
-		}
 		try {
             await httpClient.put("/products/update", product);
             alert("Producto actualizado correctamente");
@@ -100,9 +95,6 @@ export default function useProducts() {
 
     const updatePrices = async (serie: string, percent: number) => {
 		try {
-            if (!serie || !percent) {
-                throw new Error("Rellena todos los campos");
-            }
             await httpClient.put("/products/update-prices", {serie, percent});
 			alert("Precios actualizados correctamente");
 

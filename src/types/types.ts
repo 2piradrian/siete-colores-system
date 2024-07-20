@@ -20,9 +20,10 @@ export type Budget = {
 export type Product = {
 	code: string;
 	name: string;
-	category: string;
 	size: string;
 	price: number;
+	category: string;
+	keywords: string[];
 };
 
 export type Category = {
