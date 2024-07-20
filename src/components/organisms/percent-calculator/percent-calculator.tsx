@@ -27,8 +27,8 @@ export default function PercentCalculator() {
 	return (
 		<div className="container" style={{"justifyContent": "center"}}>
 			<form className={style.form} onSubmit={handleCalculate}>
-				<InputLabel label="Precio Anterior" type="number" placeholder="1500.00" id="oldPrice" />
-				<InputLabel label="Precio Nuevo" type="number" placeholder="3000.50" id="newPrice" />
+				<InputLabel label="Precio Anterior" type="number" placeholder="1500.00" id="oldPrice" required />
+				<InputLabel label="Precio Nuevo" type="number" placeholder="3000.50" id="newPrice" required />
 				<MainButton text="Calcular" type="submit"/>
 			</form>
 			<p className={style.total}>Porcentaje: {percent.toFixed(2)}%</p>

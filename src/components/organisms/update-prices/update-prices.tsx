@@ -23,8 +23,8 @@ export default function UpdatePrices() {
 
     return (
 		<form className={style.form} onSubmit={handleUpdate}>
-			<InputLabel label="Serie" type="text" placeholder="A" id="serie" />
-			<InputLabel label="Porcentaje" type="number" placeholder="15" id="percent" />				
+			<InputLabel label="Serie" type="text" placeholder="A" id="serie" required />
+			<InputLabel label="Porcentaje" type="number" placeholder="15" id="percent" required />				
             <MainButton text="Actualizar" type="submit"/>
 		</form>
     )

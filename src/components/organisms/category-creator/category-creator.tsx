@@ -21,7 +21,7 @@ export default function CategoryCreator({ createCategory }: Props) {
 
     return (
         <form className={style.form} onSubmit={handleSubmit}>
-            <InputLabel label="Categoría" type="text" placeholder="Animales" id="category" />
+            <InputLabel label="Categoría" type="text" placeholder="Animales" id="category" required/>
             <MainButton text="Agregar" type="submit"/>
         </form>
     );

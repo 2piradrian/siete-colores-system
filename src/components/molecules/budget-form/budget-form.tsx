@@ -27,8 +27,8 @@ export default function BudgetForm({ setClientAndDiscount }: Props) {
     return (
         <form onSubmit={handleSubmit}>
 			<div className={style.preform}>
-				<InputLabel id="client" type="text" label="Cliente" placeholder="Cotillon" />
-                <InputLabel id="discount" type="number" label="Descuento" placeholder="10" />
+				<InputLabel id="client" type="text" label="Cliente" placeholder="Cotillon" required/>
+                <InputLabel id="discount" type="number" label="Descuento" placeholder="10" required={false}/>
 				<MainButton text="Cargar datos" type="submit" />
 			</div>
 		</form>
