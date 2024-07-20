@@ -5,6 +5,7 @@ import InputLabel from "../../atoms/input-label/input-label";
 import SelectLabel from "../../atoms/select-label/select-label";
 import MainButton from "../../atoms/main-button/main-button";
 import style from "./style.module.css"
+import TextAreaLabel from "../../atoms/textarea-label/input-label";
 
 type Props = {
     empty: boolean;
@@ -83,11 +84,10 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     label="Categoría" 
                     value={formData?.category || ""} 
                     />
-                <InputLabel 
+                <TextAreaLabel 
                     id="keywords"
                     label="Palabras clave"
                     placeholder="cursiva letra sello"
-                    type="text"
                     value={formData?.keywords?.join(" ") || ""}
                     required
                     />

@@ -26,8 +26,8 @@
 	position: relative;
 }
 
-.form input, .form select {
-	width: 500px;
+.form input, .form select, .form textarea {
+	width: 500px !important;
 }
 
 .form label {
