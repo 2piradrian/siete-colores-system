@@ -6,6 +6,7 @@ import SelectLabel from "../../atoms/select-label/select-label";
 import MainButton from "../../atoms/main-button/main-button";
 import style from "./style.module.css"
 import TextAreaLabel from "../../atoms/textarea-label/input-label";
+import useCategories from "../../../hooks/useCategories";
 
 type Props = {
     empty: boolean;
@@ -17,10 +18,15 @@ type Props = {
 
 export default function ProductForm({ empty, product, setOpen, onSubmit, onDelete }: Props) {
     const [formData, setFormData] = useState<Product | undefined>({...product as Product} || undefined);
+    const { categories } = useCategories();
 
     useEffect(() => {
         if (product) setFormData({...product});
     }, [product]);
+
+    useEffect(() => {
+        console.log(categories);
+    }, [categories]);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -83,6 +89,7 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     id="category" 
                     label="Categoría" 
                     value={formData?.category || ""} 
+                    values={categories.map((category) => category.name)}
                     />
                 <TextAreaLabel 
                     id="keywords"
