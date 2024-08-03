@@ -7,9 +7,7 @@ export default function Statistics() {
 	};
 
 	return (
-		<section className="container" style={{"justifyContent": "center"}}>
-			<h2>Bienvenido,</h2>
-			<h1 className={style.h1}>Siete Colores</h1>
+		<section className={style.container}>
 			<h3 className={style.h3}>Estadísticas del mes de {getMonth()}</h3>
 			<Stats />
 		</section>

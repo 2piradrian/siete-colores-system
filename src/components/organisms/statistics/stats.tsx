@@ -8,8 +8,8 @@ export default function Stats() {
 	const { statistics } = useStatistics();
 	
 	return (
-		<>
-			<div className={style.container}>
+		<div className={style.stats}>
+			<div className={style.statsContainer}>
 				<StatisticsData title="Productos" subtitle="vendidos en el mes" data={statistics?.monthQuantity}/>
 				<StatisticsData title="Productos" subtitle="vendidos en el año" data={statistics?.yearQuantity}/>
 				<StatisticsData title="Producto" subtitle="más vendido en el mes" data={statistics?.mostSelledOnMonth}/>
@@ -19,6 +19,6 @@ export default function Stats() {
 				<StatisticsList title="Top del mes" list={statistics?.yearTop}/>
 				<StatisticsList title="Top del año" list={statistics?.yearTop}/>
 			</div>
-		</>
+		</div>
 	);
 }
