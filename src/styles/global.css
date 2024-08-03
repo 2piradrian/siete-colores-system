@@ -61,13 +61,13 @@ main {
 	overflow: hidden;
 }
 
-.tableContainer {
+.table {
 	border-radius: 15px;
     border: 1px solid var(--secondary);
 	-ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-.tableContainer::-webkit-scrollbar {
+.table::-webkit-scrollbar {
     display: none;
 }

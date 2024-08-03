@@ -22,7 +22,7 @@ export default function ProductsList(props: Props) {
     const {product, products, onClick, createProduct, deleteProduct, updateProduct, openUpdate, setOpenUpdate, openCreate, setOpenCreate} = props;
     
     return (
-        <div className={`${style.container} tableContainer`}>
+        <div className={`${style.container} table`}>
             <ProductsTable 
                 table={allProducts}
                 products={products} 
