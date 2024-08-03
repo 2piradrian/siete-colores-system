@@ -1,9 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import SearchProducts from "../../components/molecules/search-products/search-products";
 import ProductsList from "../../components/organisms/product-list/products-list";
 import useProducts from "../../hooks/useProducts";
 import AppLayout from "../../layout/app-layout";
 import ContainerLayout from "../../layout/container-layout";
-import { useNavigate } from "react-router-dom";
 
 export default function Products() {
     const navigate = useNavigate();
