@@ -62,8 +62,8 @@ main {
 }
 
 .tableContainer {
-	border-radius: 10px;
-    border: 1px solid var(--tertiary);
+	border-radius: 15px;
+    border: 1px solid var(--secondary);
 	-ms-overflow-style: none;
     scrollbar-width: none;
 }
