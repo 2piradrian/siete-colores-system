@@ -16,7 +16,7 @@ export default function Stats() {
 				<StatisticsData title="Producto" subtitle="más vendido en el año" data={statistics?.mostSelledOnYear}/>
 			</div>
 			<div className={style.topContainer}>
-				<StatisticsList title="Top del mes" list={statistics?.yearTop}/>
+				<StatisticsList title="Top del mes" list={statistics?.monthTop}/>
 				<StatisticsList title="Top del año" list={statistics?.yearTop}/>
 			</div>
 		</div>
