@@ -3,7 +3,7 @@ import style from "./style.module.css";
 type Props = {
     title: string;
     subtitle: string;
-    data: any;
+    data?: any;
 };
 
 export default function StatisticsData({ title, subtitle, data }: Props) {

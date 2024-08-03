@@ -16,8 +16,20 @@ export default function Stats() {
 				<StatisticsData title="Producto" subtitle="más vendido en el año" data={statistics?.mostSelledOnYear}/>
 			</div>
 			<div className={style.topContainer}>
-				<StatisticsList title="Top del mes" list={statistics?.monthTop}/>
-				<StatisticsList title="Top del año" list={statistics?.yearTop}/>
+				{
+					statistics?.monthTop?.length != 0 ? (
+						<StatisticsList title="Top del mes" list={statistics?.monthTop}/>
+					) : (
+						<StatisticsData title="Top" subtitle="vendidos en el mes" />
+					)
+				}
+				{
+					statistics?.yearTop?.length != 0 ? (
+						<StatisticsList title="Top del año" list={statistics?.yearTop}/>
+					) : (
+						<StatisticsData title="Top" subtitle="vendidos en el año" />
+					)
+				}
 			</div>
 		</div>
 	);
