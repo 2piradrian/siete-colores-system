@@ -4,10 +4,11 @@ import Title from "../components/atoms/title/title";
 type Props = {
     children: ReactNode;
     title: string;
+    scrollable?: boolean
 };
-export default function ContainerLayout({ children, title }: Props) {
+export default function ContainerLayout({ children, title, scrollable }: Props) {
     return (
-        <div className="container">
+        <div className="container" style={{"height": scrollable ? "auto" : "100vh"}}>
             <Title title={title} />
             <div className="subcontainer">{children}</div>
         </div>

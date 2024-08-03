@@ -8,27 +8,40 @@ import useProducts from "../../hooks/useProducts";
 import style from "./style.module.css"
 
 export default function ProductEditor() {
+    const params = useParams();
     const { getProductByCode, createProduct, deleteProduct, updateProduct } = useProducts();
     const [product, setProduct] = useState<Product | undefined>(undefined);
-    const params = useParams();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (params.code) {
             getProductByCode(params.code as string)
             .then((product) => { setProduct(product) })
             .catch(() => { setProduct(undefined) })
+            .finally(() => { setLoading(false) });
+        }
+        else {
+            setLoading(false);
         }
     }, [params.code]);
+
+    useEffect(() => {
+        console.log(loading);
+    }, [loading]);
     
     return (
         <AppLayout>
-            <ContainerLayout title="Editor de Productos">
+            <ContainerLayout title="Editor de Productos" scrollable={true}>
                 <h2 className={style.subtitle}>{params.code ?? "Nuevo producto"}</h2>
-                <ProductForm 
-                    product={product} 
-                    onDelete={deleteProduct} 
-                    onSubmit={params.code ? updateProduct : createProduct}
-                />
+                {loading ? (
+                    <p>Cargando...</p>
+                ) : (
+                    <ProductForm 
+                        product={product} 
+                        onDelete={deleteProduct} 
+                        onSubmit={params.code ? updateProduct : createProduct} 
+                    />
+                )}
             </ContainerLayout>
         </AppLayout>
     );

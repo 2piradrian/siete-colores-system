@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { MdOutlineDeleteForever } from "react-icons/md";
 import { Product } from "../../../types/types";
 import InputLabel from "../../atoms/input-label/input-label";
 import SelectLabel from "../../atoms/select-label/select-label";
@@ -7,6 +5,7 @@ import MainButton from "../../atoms/main-button/main-button";
 import TextAreaLabel from "../../atoms/textarea-label/input-label";
 import useCategories from "../../../hooks/useCategories";
 import DestructiveButton from "../../atoms/destructive-button/destructive-button";
+import { useNavigate } from "react-router-dom";
 import style from "./style.module.css"
 
 type Props = {
@@ -16,12 +15,8 @@ type Props = {
 }
 
 export default function ProductForm({ product, onSubmit, onDelete }: Props) {
-    const [formData, setFormData] = useState<Product | undefined>(undefined);
     const { categories } = useCategories();
-
-    useEffect(() => {
-        setFormData(product);
-    }, [product]);
+    const navigate = useNavigate();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -37,13 +32,13 @@ export default function ProductForm({ product, onSubmit, onDelete }: Props) {
             category: product.category as string,
             keywords: keywords
         }).then(() => {
-            /* go back */
+            navigate("/products");
         });
     }
 
     const handleDelete = () => {
-        onDelete(formData?.code || "");
-        /* go back */
+        onDelete(product?.code || "");
+        navigate("/products");
     }
 
     return (
@@ -54,7 +49,7 @@ export default function ProductForm({ product, onSubmit, onDelete }: Props) {
                     label="Código" 
                     placeholder="A236" 
                     type="text" 
-                    value={formData?.code} 
+                    value={product?.code || ""} 
                     required
                     />
                 <InputLabel 
@@ -62,7 +57,7 @@ export default function ProductForm({ product, onSubmit, onDelete }: Props) {
                     label="Nombre" 
                     placeholder="LETRA CURSIVA" 
                     type="text" 
-                    value={formData?.name} 
+                    value={product?.name || ""} 
                     required
                     />
                 <InputLabel 
@@ -70,7 +65,7 @@ export default function ProductForm({ product, onSubmit, onDelete }: Props) {
                     placeholder="15mm x 15mm" 
                     label="Tamaño" 
                     type="text" 
-                    value={formData?.size || ""} 
+                    value={product?.size || ""} 
                     required
                     />
                 <InputLabel 
@@ -78,31 +73,31 @@ export default function ProductForm({ product, onSubmit, onDelete }: Props) {
                     placeholder="3090" 
                     label="Precio" 
                     type="number" 
-                    value={formData?.price?.toString() || ""} 
+                    value={product?.price?.toString() || ""} 
                     required
                     />
                 <SelectLabel
                     id="category" 
                     label="Categoría" 
-                    value={formData?.category || ""} 
+                    value={product?.category || ""} 
                     values={categories.map((category) => category.name)}
                     />
                 <TextAreaLabel 
                     id="keywords"
                     label="Palabras clave"
                     placeholder="cursiva letra sello"
-                    value={formData?.keywords?.join(" ") || ""}
+                    value={product?.keywords?.join(" ") || ""}
                     required
                     />
-                <div className={style.buttonContainer}>
-                    <MainButton text={!product ? "Crear" : "Actualizar"} type="submit"/>
-                    <DestructiveButton text="Cancelar" type="button" onClick={() => {/* go back */}}/>
-			    </div>
-                {product &&
-                    <div className={style.delete} onClick={handleDelete}>
-				        <MdOutlineDeleteForever />
+                <div className={style.buttons}>
+                    <div className={style.buttonContainer}>
+                        <MainButton text={!product ? "Crear" : "Actualizar"} type="submit"/>
+                        <DestructiveButton text="Cancelar" type="button" onClick={() => {navigate("/products")}}/>
 			        </div>
-                }   
+                    <div className={style.buttonContainer}>
+                        {product && <DestructiveButton text="Eliminar" type="button" onClick={handleDelete}/>}   
+                    </div>
+                </div>
             </form>
         </div>
     )

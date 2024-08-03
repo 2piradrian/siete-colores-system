@@ -18,7 +18,7 @@
 }
 
 .container > select:focus {
-	border: 1px solid var(--main);
+	border: 2px solid var(--main);
 }
 
 .container > select::placeholder {
