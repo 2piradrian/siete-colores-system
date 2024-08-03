@@ -1,0 +1,9 @@
+.container {
+    width: 100%;
+    width: auto;
+    outline: none;
+    border: 0px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 18px;
+}

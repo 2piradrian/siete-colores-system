@@ -4,7 +4,7 @@ import style from "./style.module.css"
 type Props = {
     id: string;
     type: "text" | "number";
-    label: string;
+    label?: string;
     placeholder: string;
     required: boolean;
     value?: string | undefined;
@@ -19,7 +19,7 @@ export default function InputLabel({label, type, placeholder, id, required, valu
 
     return(
         <div className={style.container}>
-            <label htmlFor={id}>{label}</label>
+            {label && <label htmlFor={id}>{label}</label>}
 		    <input type={type} placeholder={placeholder} name={id} id={id} value={self} onChange={handleChange} required={required} />
         </div>
     )
