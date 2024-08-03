@@ -60,3 +60,14 @@ main {
 	align-items: center;
 	overflow: hidden;
 }
+
+.tableContainer {
+	border-radius: 10px;
+    border: 1px solid var(--tertiary);
+	-ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.tableContainer::-webkit-scrollbar {
+    display: none;
+}
