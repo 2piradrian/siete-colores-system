@@ -10,22 +10,18 @@ import DestructiveButton from "../../atoms/destructive-button/destructive-button
 import style from "./style.module.css"
 
 type Props = {
-    product: Product | null;
-    onSubmit: (product: Product) => /* Promise<void> */ void;
-    onDelete: (code: string) => /* Promise<void> */ void;
+    product: Product | undefined;
+    onSubmit: (product: Product) => Promise<void>;
+    onDelete: (code: string) => Promise<void>;
 }
 
 export default function ProductForm({ product, onSubmit, onDelete }: Props) {
-    const [formData, setFormData] = useState<Product | undefined>({...product as Product} || undefined);
+    const [formData, setFormData] = useState<Product | undefined>(undefined);
     const { categories } = useCategories();
 
     useEffect(() => {
-        if (product) setFormData({...product});
+        setFormData(product);
     }, [product]);
-
-    useEffect(() => {
-        console.log(categories);
-    }, [categories]);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -33,19 +29,21 @@ export default function ProductForm({ product, onSubmit, onDelete }: Props) {
 
         const keywords = (product.keywords as string).split(" ").map((keyword: string) => keyword.trim()).flat();
 
-/*         onSubmit({
+        onSubmit({
             code: product.code as string,
             name: product.name as string,
             size: product.size as string,
             price: Number(product.price),
             category: product.category as string,
             keywords: keywords
-        }).then(() => {setOpen(false)}); */
+        }).then(() => {
+            /* go back */
+        });
     }
 
     const handleDelete = () => {
         onDelete(formData?.code || "");
-        /* setOpen(false); */
+        /* go back */
     }
 
     return (
@@ -56,7 +54,7 @@ export default function ProductForm({ product, onSubmit, onDelete }: Props) {
                     label="Código" 
                     placeholder="A236" 
                     type="text" 
-                    value={formData?.code || ""} 
+                    value={formData?.code} 
                     required
                     />
                 <InputLabel 
@@ -64,7 +62,7 @@ export default function ProductForm({ product, onSubmit, onDelete }: Props) {
                     label="Nombre" 
                     placeholder="LETRA CURSIVA" 
                     type="text" 
-                    value={formData?.name || ""} 
+                    value={formData?.name} 
                     required
                     />
                 <InputLabel 
@@ -98,7 +96,7 @@ export default function ProductForm({ product, onSubmit, onDelete }: Props) {
                     />
                 <div className={style.buttonContainer}>
                     <MainButton text={!product ? "Crear" : "Actualizar"} type="submit"/>
-                    <DestructiveButton text="Cancelar" type="button" onClick={() => {/* setOpen(false) */}}/>
+                    <DestructiveButton text="Cancelar" type="button" onClick={() => {/* go back */}}/>
 			    </div>
                 {product &&
                     <div className={style.delete} onClick={handleDelete}>
