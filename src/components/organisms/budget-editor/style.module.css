@@ -1,5 +1,5 @@
 .container {
-    max-height: 100%;
+    height: 100%;
     width: 100%;
     display: flex;
 	justify-content: center;
@@ -10,9 +10,10 @@
 }
 
 .amount {
+	width: 100%;
 	display: flex;
 	margin: 10px;
-	gap: 20px;
+	gap: 50px;
 }
 
 .amount > p {
@@ -25,6 +26,7 @@
 	width: 100%;
 	display: flex;
 	overflow: hidden;
+	gap: 5px;
 }
 
 .tableContainer {

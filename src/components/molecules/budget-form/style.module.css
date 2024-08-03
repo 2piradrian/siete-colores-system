@@ -1,15 +1,16 @@
-.preform {
+.form {
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    gap: 10px;
+    gap: 20px;
 }
 
-.preform button {
-    margin: 0px;
+.form > input, .form > button {
+    margin: 0;
+    padding: 0;
 }
 
-.preform input {
-    width: 200px;
-    margin: 0px;
+.form > button {
+    width: 600px;
 }

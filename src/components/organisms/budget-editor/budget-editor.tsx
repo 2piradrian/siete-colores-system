@@ -29,10 +29,10 @@ export default function BudgetEditor({ products, budget, addProduct, subtractPro
 				<p>Total: $ {ammount.total}</p>
 			</div>
 			<div className={style.tablesContainer}>
-				<div className={style.tableContainer}>
+				<div className={`${style.tableContainer} table`}>
 					<ProductsTable products={products} table={reducedProducts} onClick={(code: string) => addProduct(code)} />
 				</div>
-				<div className={style.tableContainer}>
+				<div className={`${style.tableContainer} table`}>
 					<ProductsTable products={budget.products} table={budgetProducts} onClick={(code: string) => subtractProduct(code)} />
 				</div>
 			</div>
