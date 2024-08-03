@@ -4,19 +4,18 @@ import { Product } from "../../../types/types";
 import InputLabel from "../../atoms/input-label/input-label";
 import SelectLabel from "../../atoms/select-label/select-label";
 import MainButton from "../../atoms/main-button/main-button";
-import style from "./style.module.css"
 import TextAreaLabel from "../../atoms/textarea-label/input-label";
 import useCategories from "../../../hooks/useCategories";
+import DestructiveButton from "../../atoms/destructive-button/destructive-button";
+import style from "./style.module.css"
 
 type Props = {
-    empty: boolean;
     product: Product | null;
-    setOpen: (open: boolean) => void;
-    onSubmit: (product: Product) => Promise<void>;
-    onDelete: (code: string) => Promise<void>;
+    onSubmit: (product: Product) => /* Promise<void> */ void;
+    onDelete: (code: string) => /* Promise<void> */ void;
 }
 
-export default function ProductForm({ empty, product, setOpen, onSubmit, onDelete }: Props) {
+export default function ProductForm({ product, onSubmit, onDelete }: Props) {
     const [formData, setFormData] = useState<Product | undefined>({...product as Product} || undefined);
     const { categories } = useCategories();
 
@@ -34,25 +33,24 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
 
         const keywords = (product.keywords as string).split(" ").map((keyword: string) => keyword.trim()).flat();
 
-        onSubmit({
+/*         onSubmit({
             code: product.code as string,
             name: product.name as string,
             size: product.size as string,
             price: Number(product.price),
             category: product.category as string,
             keywords: keywords
-        }).then(() => {setOpen(false)});
+        }).then(() => {setOpen(false)}); */
     }
 
     const handleDelete = () => {
         onDelete(formData?.code || "");
-        setOpen(false);
+        /* setOpen(false); */
     }
 
     return (
         <div className={style.container}>
             <form className={style.form} onSubmit={handleSubmit}>
-                <h2>{empty ? "Crear producto" : "Actualizar producto"}</h2>
                 <InputLabel
                     id="code" 
                     label="Código" 
@@ -79,7 +77,7 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     />
                 <InputLabel 
                     id="price" 
-                    placeholder="3090.50" 
+                    placeholder="3090" 
                     label="Precio" 
                     type="number" 
                     value={formData?.price?.toString() || ""} 
@@ -99,10 +97,10 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     required
                     />
                 <div className={style.buttonContainer}>
-                    <MainButton text={empty? "Crear" : "Actualizar"} type="submit"/>
-                    <MainButton text="Cancelar" type="button" onClick={() => setOpen(false)}/>
+                    <MainButton text={!product ? "Crear" : "Actualizar"} type="submit"/>
+                    <DestructiveButton text="Cancelar" type="button" onClick={() => {/* setOpen(false) */}}/>
 			    </div>
-                {!empty &&
+                {product &&
                     <div className={style.delete} onClick={handleDelete}>
 				        <MdOutlineDeleteForever />
 			        </div>

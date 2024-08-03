@@ -6,9 +6,10 @@ import Products from './routes/products/products'
 import Budget from './routes/budget/budget'
 import Budgets from './routes/budgets/budgets'
 import BudgetDetail from './routes/budget-detail/budget-detail'
-import './styles/global.css'
 import Percent from './routes/percent/percent'
 import Categories from './routes/categories/categories'
+import ProductEditor from './routes/product-editor/product-editor'
+import './styles/global.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -16,6 +17,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/products" element={<Products />}/>
+        <Route path='/products/:code' element={<ProductEditor />}/>
+        <Route path='/products/new' element={<ProductEditor />}/>
         <Route path="/budget" element={<Budget />}/>
         <Route path="/budgets" element={<Budgets />}/>
         <Route path="/budget-detail/:id" element={<BudgetDetail />}/>

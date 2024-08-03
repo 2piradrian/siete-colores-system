@@ -6,7 +6,7 @@
     border: none;
     outline: none;
     margin: 10px 0;
-    background: var(--main);
+    background: var(--destructive);
     color: var(--contrast);
     font-size: 15px;
     font-weight: 500;

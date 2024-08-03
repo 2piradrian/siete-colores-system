@@ -28,7 +28,7 @@ export default function ProductsList(props: Props) {
                 products={products} 
                 onClick={onClick}
             />
-            {openUpdate && (
+            {/* {openUpdate && (
 				<ProductForm
 					empty={false} 
 					product={product} 
@@ -43,7 +43,7 @@ export default function ProductsList(props: Props) {
 					setOpen={setOpenCreate} 
 					onSubmit={createProduct} 
 					onDelete={deleteProduct} />
-			)}
+			)} */}
 			<FAButton content="+" onClick={() => setOpenCreate(true)} />
         </div>
     );

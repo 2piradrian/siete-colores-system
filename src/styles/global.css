@@ -39,7 +39,7 @@ main {
 .container {
 	height: 100%;
 	width: 100%;
-	padding: 0px 60px;
+	padding: 0px 80px;
 	max-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -58,7 +58,13 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	overflow: hidden;
+	overflow-x: hidden;
+	-ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.subcontainer::-webkit-scrollbar {
+	display: none;
 }
 
 .table {
