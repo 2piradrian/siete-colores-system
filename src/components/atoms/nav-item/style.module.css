@@ -8,9 +8,9 @@
 	align-items: center;
 	gap: 20px;
 	cursor: pointer;
-	color: var(--background);
 	text-decoration: none;
 	transition: all 400ms ease-in-out;
+	color: var(--background);
 }
 
 .route > p {
@@ -18,8 +18,8 @@
 }
 
 .active {
+	margin-left: 10px;
 	background: var(--background);
-	margin-left: 15px;
 }
 
 .active > p {
@@ -27,7 +27,7 @@
 }
 
 .inactive > p {
-	color: var(--background);
+	color: var(--contrast);
 }
 
 .active > .icon > svg {
@@ -35,14 +35,14 @@
 }
 
 .inactive > .icon > svg {
-	color: var(--background);
+	color: var(--contrast);
 }
 
 .icon svg {
 	height: 100%;
 	font-size: 20px;
-	/* color: var(--addornOn); */
 }
+
 .route > p {
 	font-size: 18px;
 	font-weight: 700;
