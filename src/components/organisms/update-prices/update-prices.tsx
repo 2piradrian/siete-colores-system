@@ -18,6 +18,8 @@ export default function UpdatePrices() {
 		const serie = String(percentData.serie);
 		const percent = Number(percentData.percent);
 
+		alert(`Se actualizarán los precios de la serie ${serie} en un ${percent}%. Por favor, espera un momento, es una tarea pesada.`);
+
 		updatePrices(serie, percent);
 	};
 

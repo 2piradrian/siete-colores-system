@@ -7,7 +7,7 @@ import style from "./style.module.css";
 export default function Percent() {
 	return (
 		<AppLayout>
-			<ContainerLayout title="Porcentajes">
+			<ContainerLayout title="Porcentajes" scrollable={true}>
 				<h2 className={style.title}>Calcular porcentajes</h2>
 				<PercentCalculator />
 				<hr className={style.hr} />

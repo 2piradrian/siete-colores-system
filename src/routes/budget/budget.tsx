@@ -9,7 +9,7 @@ export default function Budget() {
 
   return (
     <AppLayout>
-        <ContainerLayout title="Presupuesto">
+        <ContainerLayout title="Presupuesto" scrollable={false}>
             <BudgetForm setClientAndDiscount={setClientAndDiscount} />
             <BudgetEditor 
               products={products} 

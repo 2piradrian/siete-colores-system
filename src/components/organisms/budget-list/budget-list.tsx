@@ -14,7 +14,7 @@ export default function BudgetList() {
 	}, []);
 
 	return (
-		<div className={style.container}>
+		<div className={`${style.container} table`}>
 			<BudgetsTable budgets={budgetList} />
 		</div>
 	);

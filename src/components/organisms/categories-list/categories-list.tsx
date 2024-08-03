@@ -15,12 +15,11 @@ export default function CategoriesList({ categories, deleteCategory }: Props) {
     };
 
     return (
-        <div className={style.container}>
+        <div className={`${style.container} table`}>
             <table className={style.table}>
                 <TableHeader params={["Categoría"]} />
                 <tbody>
-                    {
-                        categories.map((category) => (
+                    {categories.map((category) => (
                             <TableRow 
                                 content={[category.name]} 
                                 onClick={() => {handleDelete(category.name)}} 

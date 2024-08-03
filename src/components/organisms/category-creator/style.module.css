@@ -1,0 +1,17 @@
+.form {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 20px;
+    margin: 10px 0;
+}
+
+.form > input, .form > button {
+    margin: 0;
+    padding: 0;
+}
+
+.form > button {
+    width: 600px;
+}

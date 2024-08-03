@@ -9,7 +9,7 @@ export default function Categories() {
 
     return (
         <AppLayout>
-            <ContainerLayout title="Categorías">
+            <ContainerLayout title="Categorías" scrollable={false}>
                 <CategoryCreator createCategory={createCategory} />
                 <CategoriesList categories={categories} deleteCategory={deleteCategory}/>
             </ContainerLayout>
