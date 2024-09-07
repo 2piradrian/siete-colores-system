@@ -10,7 +10,7 @@
 	height: 45px;
 	width: 100%;
 	outline: none;
-	margin: 5px 0px;
+	margin-top: 5px;
 	padding: 0 10px;
 	border-radius: 15px;
 	border: 1px solid var(--secondary);
