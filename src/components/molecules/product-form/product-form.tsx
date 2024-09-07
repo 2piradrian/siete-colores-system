@@ -30,6 +30,7 @@ export default function ProductForm({ product, onSubmit, onDelete }: Props) {
             size: product.size as string,
             price: Number(product.price),
             category: product.category as string,
+            description: product.description as string,
             keywords: keywords
         }).then(() => {
             navigate("/products");
@@ -88,6 +89,13 @@ export default function ProductForm({ product, onSubmit, onDelete }: Props) {
                     placeholder="cursiva letra sello"
                     value={product?.keywords?.join(" ") || ""}
                     required
+                    />
+                <TextAreaLabel 
+                    id="description"
+                    label="Descripción"
+                    placeholder="Conjunto de letras cursivas para sello apto para..."
+                    value={product?.description || ""}
+                    required={false}
                     />
                 <div className={style.buttons}>
                     <div className={style.buttonContainer}>
