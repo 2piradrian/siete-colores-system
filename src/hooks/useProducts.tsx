@@ -19,6 +19,11 @@ export default function useProducts() {
 
     const updateList = async () => {
         const data = await getProducts();
+
+        data.map((product: Product) => { // Define default values for the optional fields
+            product.description = product.description || "";
+        });
+
         setProducts(data || []);
     };
 
