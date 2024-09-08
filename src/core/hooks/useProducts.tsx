@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { Product } from "../../domain";
+import { ProductsRepository } from "../../infrastructure";
 
 export function useProducts() {
     const [products, setProducts] = useState<Product[]>([]);
     const [search, setSearch] = useState<string>("");
+
+    const productsRepository = new ProductsRepository();
 
     useEffect(() => {
         if (search) {
@@ -15,13 +18,8 @@ export function useProducts() {
     }, [search]);
 
     const updateList = async () => {
-        const data = await getProducts();
-
-        data.map((product: Product) => { // Define default values for the optional fields
-            product.description = product.description || "";
-        });
-
-        setProducts(data || []);
+        const data = await getProducts() || [];
+        setProducts(data);
     };
 
     const searchProducts = async () => {
@@ -39,71 +37,63 @@ export function useProducts() {
 
     const getProducts = async () => {
         try {
-            const data = await httpClient.get("/products/get-all");
-
-            return data;
+            return await productsRepository.getProducts();
         }
         catch (error) {
-            alert("Error obteniendo los productos: " + error);
+            alert(error);
         }
     };
 
     const getProductByCode = async (code: string) => {
         try {
-            const data = await httpClient.get("/products/get-by-code", { code: code });
-
-            return data;
+            return await productsRepository.getProductByCode(code);
         }
         catch (error) {
-            alert("Error buscando el producto: " + error);
+            alert(error);
         }
     };
 
     const createProduct = async (product: Product) => {
 		try {
-			if (products.find((p) => p.code === product.code)) {
-				throw new Error("El código ya existe");
-			}
-            await httpClient.post("/products/create", product);
+            await productsRepository.createProduct(product);
             alert("Producto creado correctamente");
 			updateList();
 		} 
 		catch (error) {
-			alert("Error creando el producto: " + error);
+			alert(error);
 		}
 	};
 
     const updateProduct = async (product: Product) => {
 		try {
-            await httpClient.put("/products/update", product);
+            await productsRepository.updateProduct(product);
             alert("Producto actualizado correctamente");
 			updateList()
 		} 
 		catch (error) {
-			alert("Error actualizando el producto: " + error);
+			alert(error);
 		}
 	};
 
     const deleteProduct = async (code: string) => {
         try {
-            await httpClient.delete("/products/delete", { code: code });
+            await productsRepository.deleteProduct(code);
             alert("Producto eliminado correctamente");
             updateList();
         }
         catch (error) {
-            alert("Error eliminando el producto: " + error);
+            alert(error);
         }
     };
 
     const updatePrices = async (serie: string, percent: number) => {
 		try {
-            await httpClient.put("/products/update-prices", {serie, percent});
+            await productsRepository.updateProductPrices(serie, percent);
 			alert("Precios actualizados correctamente");
-
 			updateList()
 		} 
 		catch (error) {
-			alert("Error actualizando los precios: " + error);
+			alert(error);
 		}
 	
 	}

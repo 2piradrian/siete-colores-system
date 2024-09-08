@@ -1,7 +1,7 @@
 import { useState } from "react";
-import HTTPClient from "../adapters/http-client";
 import { useProducts } from "./useProducts";
 import { Budget } from "../../domain";
+import { HTTPClient } from "../adapters/http-client";
 
 export function useBudgets() {
 	const httpClient = new HTTPClient();

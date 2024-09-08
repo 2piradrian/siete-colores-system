@@ -24,10 +24,6 @@ export function ProductEditor() {
         }
     }, [params.code]);
 
-    useEffect(() => {
-        console.log(loading);
-    }, [loading]);
-    
     return (
         <AppLayout>
             <ContainerLayout title="Editor de Productos" scrollable={true}>

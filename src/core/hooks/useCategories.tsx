@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import HTTPClient from "../adapters/http-client";
 import { Category } from "../../domain";
+import { HTTPClient } from "../adapters/http-client";
 
 export function useCategories(){
     const httpClient = new HTTPClient();

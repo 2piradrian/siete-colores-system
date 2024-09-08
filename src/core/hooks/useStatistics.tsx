@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Statistics } from "../../domain";
-import HTTPClient from "../adapters/http-client";
+import { HTTPClient } from "../adapters/http-client";
+import { Statistics } from "../../domain/types/statistics";
 
 export function useStatistics() {
     const httpClient = new HTTPClient();
