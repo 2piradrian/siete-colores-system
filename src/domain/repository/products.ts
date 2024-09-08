@@ -1,6 +1,6 @@
 import { Product } from "../types/product";
 
-export abstract class ProductsRepository {
+export abstract class ProductsRepositoryI {
     abstract getProducts(): Promise<Product[]>;
     abstract getProductByCode(code: string): Promise<Product>;
     abstract createProduct(product: Product): Promise<void>;

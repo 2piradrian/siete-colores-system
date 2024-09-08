@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { Product } from "../../domain";
-import HTTPClient from "../adapters/http-client";
 
 export function useProducts() {
-    const httpClient = new HTTPClient();
-
     const [products, setProducts] = useState<Product[]>([]);
     const [search, setSearch] = useState<string>("");
 

@@ -1,7 +1,7 @@
 import { env } from "./env";
 import axios from "axios";
 
-export default class HTTPClient {
+export class HTTPClient {
     private readonly baseURL: string;
     private readonly secret: string;
 
@@ -72,4 +72,5 @@ export default class HTTPClient {
             throw new Error(error.response.data.error);
         }
     }
+    
 };
