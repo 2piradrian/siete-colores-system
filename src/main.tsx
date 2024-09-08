@@ -1,15 +1,8 @@
+import ReactDOM from 'react-dom/client'
 import { StrictMode } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import ReactDOM from 'react-dom/client'
-import Home from './routes/home/home'
-import Products from './routes/products/products'
-import Budget from './routes/budget/budget'
-import Budgets from './routes/budgets/budgets'
-import BudgetDetail from './routes/budget-detail/budget-detail'
-import Percent from './routes/percent/percent'
-import Categories from './routes/categories/categories'
-import ProductEditor from './routes/product-editor/product-editor'
-import './styles/global.css'
+import { Budget, BudgetDetail, Budgets, Categories, Home, Percent, ProductEditor, Products } from './presentation'
+import './presentation/styles/global.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <StrictMode>
