@@ -18,13 +18,13 @@ export function useProducts() {
     }, [search]);
 
     const updateList = async () => {
-        const data = await getProducts() || [];
-        setProducts(data);
+        const response = await getProducts() || [];
+        setProducts(response);
     };
 
     const searchProducts = async () => {
-        const data = await getProducts();
-        const filteredProducts = data?.filter((product: Product) => {
+        const response = await getProducts();
+        const filteredProducts = response?.filter((product: Product) => {
             return (
                 product.name.toLowerCase().includes(search.toLowerCase()) ||
                 product.code.toLowerCase().includes(search.toLowerCase()) ||

@@ -1,28 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useProducts } from "./useProducts";
 import { Budget } from "../../domain";
-import { HTTPClient } from "../adapters/http-client";
+import { BudgetsRepository } from "../../infrastructure/repository/budgets";
 
 export function useBudgets() {
-	const httpClient = new HTTPClient();
 	const { products } = useProducts();
 
 	const [budgetList, setBudgetList] = useState<Budget[]>([]);
 	const [budget, setBudget] = useState<Budget>({ id: "", client: "", price: 0, date: new Date(), products: [], subtotal: 0, discount: 0, total: 0, });
 
+	const budgetsRepository = new BudgetsRepository();
+
+	useEffect(() => {
+		getBudgets();
+	}, []);
+
 	const getBudgets = async () => {
 		try {
-			const response = await httpClient.get("/budgets/get-all");
-
-			if (!response) {
-				throw new Error("No se han encontrado presupuestos");
-			}
-
-			setBudgetList(response || []);
-			return response || [];
+			const response = await budgetsRepository.getBudgets() || [];
+			setBudgetList(response);
 		} 
 		catch (error) {
-			alert("Error al cargar los presupuestos: " + error);
+			alert(error);
 		}
 	};
 
@@ -33,20 +32,19 @@ export function useBudgets() {
 			}
 
 			alert("Creando presupuesto...");
-			await httpClient.post("/budgets/create", { products: budget.products, client: budget.client, discount: budget.discount });
-			
+			await budgetsRepository.createBudget(budget);			
 			alert("Presupuesto creado con éxito");
 		}
 		catch (error) {
-			alert("Error al crear el presupuesto: " + error);
+			alert(error);
 		}
 	};
 
 	const getBudget = async (id: string) => {
 		try {
-			const response = await httpClient.get("/budgets/get-by-id", { id });
+			const response = await budgetsRepository.getBudget(id);
 
-			// Ordenar productos por código
+			// Sort products by code
 			const products = response.products
 			const sortedProducts = products.sort((a: { code: string }, b: { code: string }) => {
 				if (a.code < b.code) return -1;
@@ -58,16 +56,14 @@ export function useBudgets() {
 			return response;
 		}
 		catch (error) {
-			alert("Error al obtener el presupuesto: " + error);
+			alert(error);
 		}
 	};
 
 	const deleteBudget = async (id: string) => {
 		try {
-			const response = await httpClient.delete("/budgets/delete", { id });
+			await budgetsRepository.deleteBudget(id);
 			alert("Presupuesto eliminado con éxito");
-
-			return response;
 		}
 		catch (error) {
 			alert("Error al eliminar el presupuesto" + error);
@@ -94,10 +90,7 @@ export function useBudgets() {
 		else {
 			// Si el producto no existe, añádelo con cantidad inicial de 1
 			const product = products.find((product) => product.code === code);
-
-			if (!product) {
-				return alert("Producto no encontrado");
-			}
+			if (!product) return alert("Producto no encontrado");
 
 			const quantityProduct = {
 				code: product.code,
@@ -113,10 +106,7 @@ export function useBudgets() {
 
 	const subtractProduct = (code: string) => {
 		const existingProduct = budget.products.find((product) => product.code === code);
-
-		if (!existingProduct) {
-			return alert("Producto no encontrado");
-		}
+		if (!existingProduct) return alert("Producto no encontrado");
 
 		if (existingProduct.quantity === 1) {
 			const newProductList = budget.products.filter((product) => product.code !== code);
@@ -166,7 +156,6 @@ export function useBudgets() {
 		setClientAndDiscount,
 		createBudget,
 		getBudget,
-		getBudgets,
 		budgetList,
 		deleteBudget,
 	};
