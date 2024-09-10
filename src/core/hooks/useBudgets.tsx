@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useProducts } from "./useProducts";
 import { Budget } from "../../domain";
-import { BudgetsRepository } from "../../infrastructure/repository/budgets";
+import { BudgetsRepository } from "../../infrastructure";
 
 export function useBudgets() {
 	const { products } = useProducts();
