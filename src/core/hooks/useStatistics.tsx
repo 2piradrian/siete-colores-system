@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { HTTPClient } from "../adapters/http-client";
 import { Statistics } from "../../domain/types/statistics";
+import { StatisticsRepository } from "../../infrastructure/repository/statistics";
 
 export function useStatistics() {
-    const httpClient = new HTTPClient();
 	const [statistics, setStatistics] = useState<Statistics | undefined>();
+
+	const statisticsRepository = new StatisticsRepository();
 
 	useEffect(() => {
 		fetchStatistics().then((data) => setStatistics(data));
@@ -12,7 +13,7 @@ export function useStatistics() {
 
 	const fetchStatistics = async () => {
 		try {
-            return await httpClient.get("/statistics");;
+            return await statisticsRepository.getStatistics();
 		} 
 		catch (error) {
 			alert("Error al cargar las estadísticas: " + error);
