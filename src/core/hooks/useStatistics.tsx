@@ -16,7 +16,7 @@ export function useStatistics() {
             return await statisticsRepository.getStatistics();
 		} 
 		catch (error) {
-			alert("Error al cargar las estadísticas: " + error);
+			alert(error);
 		}
 	}
 
