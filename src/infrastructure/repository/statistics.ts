@@ -5,8 +5,8 @@ export class StatisticsRepository implements StatisticsRepositoryI {
 
     private dataSource: StatisticsDataSourceI;
 
-    constructor(){
-        this.dataSource = new StatisticsApiDataSource();
+    constructor(dataSource: StatisticsDataSourceI = new StatisticsApiDataSource()){
+        this.dataSource = dataSource;
     }
 
     public async getStatistics(): Promise<Statistics> {
@@ -17,4 +17,5 @@ export class StatisticsRepository implements StatisticsRepositoryI {
             throw error;
         }
     }
+    
 }

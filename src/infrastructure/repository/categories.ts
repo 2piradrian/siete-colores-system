@@ -5,8 +5,8 @@ export class CategoriesRepository implements CategoriesRepositoryI {
 
     private dataSource: CategoriesDataSourceI;
 
-    constructor(){
-        this.dataSource = new CategoriesApiDataSource();
+    constructor(dataSource: CategoriesDataSourceI = new CategoriesApiDataSource()){
+        this.dataSource = dataSource;
     }
 
     public async getCategories(): Promise<Category[]> {

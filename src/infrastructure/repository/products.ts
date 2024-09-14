@@ -5,8 +5,8 @@ export class ProductsRepository implements ProductsRepositoryI {
 
     private dataSource: ProductsDataSourceI;
 
-    constructor(){
-        this.dataSource = new ProductsApiDataSource();
+    constructor(dataSource: ProductsDataSourceI = new ProductsApiDataSource()){
+        this.dataSource = dataSource;
     }
 
     public async getProducts(): Promise<Product[]> {

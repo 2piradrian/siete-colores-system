@@ -5,8 +5,8 @@ export class BudgetsRepository implements BudgetsRepositoryI {
 
     private dataSource: BudgetsDataSourceI;
 
-    constructor(){
-        this.dataSource = new BudgetsApiDataSource();
+    constructor(dataSource: BudgetsDataSourceI = new BudgetsApiDataSource()){
+        this.dataSource = dataSource;
     }
 
     public async getBudgets(): Promise<Budget[]> {
