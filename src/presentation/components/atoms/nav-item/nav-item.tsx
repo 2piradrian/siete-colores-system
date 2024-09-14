@@ -16,7 +16,7 @@ export function NavItem({ state, icon, name, route }: Props) {
                 isActive ? `${style.active} ${style.route}` : `${style.inactive} ${style.route}`
             }>
             <div className={style.icon}>{icon}</div>
-            <p style={state ? { opacity: '1', width: 'auto' } : { opacity: '0', width: '0px' }}>
+            <p style={state ? { opacity: '1', width: 'auto' } : { opacity: '0', display: 'none' }}>
                 {name}
             </p>
         </NavLink>
