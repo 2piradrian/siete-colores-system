@@ -11,7 +11,7 @@ type Props = {
 }
 
 export function InputLabel({label, type, placeholder, id, required, value}: Props){
-    const [self, setSelf] = useState<string | undefined>("" || value)
+    const [self, setSelf] = useState<string | undefined>(value || "")
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSelf(e.target.value);
@@ -20,7 +20,16 @@ export function InputLabel({label, type, placeholder, id, required, value}: Prop
     return(
         <div className={style.container}>
             {label && <label htmlFor={id}>{label}</label>}
-		    <input type={type} placeholder={placeholder} name={id} id={id} value={self} onChange={handleChange} required={required} />
+		    <input 
+                type={type} 
+                placeholder={placeholder} 
+                name={id} 
+                id={id} 
+                value={self} 
+                onChange={handleChange} 
+                required={required} 
+                onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()} 
+            />
         </div>
     )
 }
