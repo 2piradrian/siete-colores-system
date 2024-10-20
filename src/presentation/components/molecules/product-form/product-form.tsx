@@ -27,7 +27,8 @@ export function ProductForm({ product, onSubmit, onDelete }: Props) {
             price: Number(product.price),
             category: product.category as string,
             description: product.description as string,
-            keywords: keywords
+            keywords: keywords,
+            stock: Number(product.stock) || null
         }).then(() => {
             navigate("/products");
         });
@@ -72,6 +73,14 @@ export function ProductForm({ product, onSubmit, onDelete }: Props) {
                     type="number" 
                     value={product?.price?.toString() || ""} 
                     required
+                    />
+                <InputLabel
+                    id="stock"
+                    label="Stock"
+                    placeholder="Infinito"
+                    type="number"
+                    value={product?.stock?.toString() || ""}
+                    required={false}
                     />
                 <SelectLabel
                     id="category" 
