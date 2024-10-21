@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import { StrictMode } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Budget, BudgetDetail, Budgets, Categories, Home, Percent, ProductEditor, Products } from './presentation'
+import { Budget, BudgetDetail, Budgets, Categories, Home, Percent, ProductEditor, Products, SubCategories } from './presentation'
 import './presentation/styles/global.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -17,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/budget-detail/:id" element={<BudgetDetail />}/>
         <Route path="/percents" element={<Percent />}/>
         <Route path="/categories" element={<Categories />}/>
+        <Route path="/subcategories" element={<SubCategories />}/>
       </Routes>    
     </BrowserRouter>
   </StrictMode>,

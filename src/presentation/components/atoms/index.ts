@@ -1,3 +1,4 @@
+export * from "./chip-with-cross/chip-with-cross";
 export * from "./destructive-button/destructive-button";
 export * from "./fa-button/fa-button";
 export * from "./input-label/input-label";

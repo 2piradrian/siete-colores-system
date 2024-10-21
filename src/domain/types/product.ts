@@ -4,6 +4,7 @@ export type Product = {
 	size: string;
 	price: number;
 	category: string;
+	subcategories: string[];
 	description: string;
 	keywords: string[];
 	stock: number | null; // null means infinite

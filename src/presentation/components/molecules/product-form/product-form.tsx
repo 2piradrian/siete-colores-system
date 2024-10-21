@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Product } from "../../../../domain";
-import { useCategories } from "../../../../core";
+import { MultipleSelector } from "../multiple-selector/multiple-selector";
 import { DestructiveButton, InputLabel, MainButton, SelectLabel, TextAreaLabel } from "../../atoms";
+import { useCategories, useSubCategories } from "../../../../core";
+import { Product } from "../../../../domain";
 import style from "./style.module.css"
 
 type Props = {
@@ -12,7 +14,20 @@ type Props = {
 
 export function ProductForm({ product, onSubmit, onDelete }: Props) {
     const navigate = useNavigate();
+
     const { categories } = useCategories();
+    const { subcategories } = useSubCategories();
+
+    const [selectedSubcategories, setSelectedSubCategories] = useState<string[]>([]);
+
+    useEffect(() => {
+        if (product) {
+            let filtered = [...selectedSubcategories, ...product.subcategories];
+            filtered = filtered.filter((subcategory, index) => filtered.indexOf(subcategory) === index);
+
+            setSelectedSubCategories(filtered);
+        }
+    }, [product]);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -26,6 +41,7 @@ export function ProductForm({ product, onSubmit, onDelete }: Props) {
             size: product.size as string,
             price: Number(product.price),
             category: product.category as string,
+            subcategories: selectedSubcategories,
             description: product.description as string,
             keywords: keywords,
             stock: Number(product.stock) || null
@@ -37,6 +53,16 @@ export function ProductForm({ product, onSubmit, onDelete }: Props) {
     const handleDelete = () => {
         onDelete(product?.code || "");
         navigate("/products");
+    }
+
+    const handleAddSubcategory = (subcategory: string) => {
+        setSelectedSubCategories([...selectedSubcategories, subcategory]);
+    }
+
+    const handleRemoveSubcategory = (subcategory: string) => {
+        setSelectedSubCategories(
+            selectedSubcategories.filter((selectedSubcategory) => selectedSubcategory !== subcategory)
+        );
     }
 
     return (
@@ -88,6 +114,15 @@ export function ProductForm({ product, onSubmit, onDelete }: Props) {
                     value={product?.category || ""} 
                     values={categories.map((category) => category.name)}
                     />
+                <MultipleSelector 
+                    id="subcategories"
+                    label="Sub-Categorías"
+                    options={subcategories.map((subcategory) => subcategory.name)}
+                    selected={selectedSubcategories}
+                    buttonText="Agregar Sub-Categoría"
+                    onAdd={(subcategory: string) => {handleAddSubcategory(subcategory)}}
+                    onRemove={(subcategory: string) => {handleRemoveSubcategory(subcategory)}}
+                />
                 <TextAreaLabel
                     id="keywords"
                     label="Palabras clave"
