@@ -1,7 +1,7 @@
 import style from "./style.module.css";
 
 type Props = {
-    content: (string | number | null | string[])[];
+    content: (string | number | boolean | string[])[];
     onClick: () => void;
 };
 
