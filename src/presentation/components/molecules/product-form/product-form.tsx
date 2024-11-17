@@ -44,7 +44,7 @@ export function ProductForm({ product, onSubmit, onDelete }: Props) {
             subcategories: selectedSubcategories,
             description: product.description as string,
             keywords: keywords,
-            stock: Number(product.stock) || null
+            available: product.available === "Disponible" ? true : false,
         }).then(() => {
             navigate("/products");
         });
@@ -100,14 +100,12 @@ export function ProductForm({ product, onSubmit, onDelete }: Props) {
                     value={product?.price?.toString() || ""} 
                     required
                     />
-                <InputLabel
-                    id="stock"
-                    label="Stock"
-                    placeholder="Infinito"
-                    type="number"
-                    value={product?.stock?.toString() || ""}
-                    required={false}
-                    />
+                <SelectLabel
+                    id="available" 
+                    label="Disponibilidad" 
+                    value={product?.available ? "Disponible" : "No disponible"} 
+                    values={["Disponible", "No disponible"]} 
+                />
                 <SelectLabel
                     id="category" 
                     label="Categoría" 

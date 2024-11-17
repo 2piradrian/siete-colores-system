@@ -7,5 +7,5 @@ export type Product = {
 	subcategories: string[];
 	description: string;
 	keywords: string[];
-	stock: number | null; // null means infinite
+	available: boolean;
 };
