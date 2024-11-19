@@ -49,9 +49,9 @@ export class ProductsRepository implements ProductsRepositoryI {
         }
     }
 
-    public async deleteProduct(id: string): Promise<void> {
+    public async deleteProduct(code: string): Promise<void> {
         try {
-            await this.dataSource.deleteProduct(id);
+            await this.dataSource.deleteProduct(code);
         }
         catch (error) {
             throw error;

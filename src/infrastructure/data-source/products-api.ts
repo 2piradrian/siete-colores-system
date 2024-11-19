@@ -50,9 +50,9 @@ export class ProductsApiDataSource implements ProductsDataSourceI {
         }
     }
 
-    public async deleteProduct(id: string): Promise<void> {
+    public async deleteProduct(code: string): Promise<void> {
         try {
-            await this.httpClient.delete("/products/delete", { id: id });
+            await this.httpClient.delete("/products/delete", { code: code });
         }
         catch (error) {
             throw new Error("Error eliminando el producto: " + error);
