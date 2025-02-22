@@ -5,7 +5,7 @@ type Props = {
     list?: any[];
 };
 
-export function StatisticsList({title, list}: Props){
+export default function StatisticsList({title, list}: Props){
     return (
         <div className={style.card}>
             <h3 className={style.h3}>{title}</h3>

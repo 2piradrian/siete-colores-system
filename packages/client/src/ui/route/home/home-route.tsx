@@ -1,8 +1,8 @@
 import { AppLayout, ContainerLayout } from "../../layout";
+import StatisticsData from "../../components/statistics-card/statistics-data";
+import StatisticsList from "../../components/statistics-card/statistics-list";
 import useViewModel from "./viewmodel/useViewModel";
 import style from "./style.module.css";
-import { StatisticsData } from "../../components/statistics-card/statistics-data";
-import { StatisticsList } from "../../components/statistics-card/statistics-list";
 
 export default function HomeRoute() {
 

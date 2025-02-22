@@ -1,0 +1,23 @@
+.tableCell {
+	height: 55px;
+	padding: 8px;
+	border-bottom: 1px solid #ccc;
+	user-select: none;
+	overflow-x: hidden;
+}
+
+.tableRow {
+	height: 45px;
+	transition: all 0.2s ease;
+	cursor: pointer;
+	user-select: none;
+	overflow-x: hidden;
+}
+
+.tableRow:hover {
+	font-weight: 700;
+	position: relative;
+	user-select: none;
+	overflow-x: hidden;
+	background-color: var(--tertiary)
+}

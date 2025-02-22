@@ -6,7 +6,7 @@ type Props = {
     data?: any;
 };
 
-export function StatisticsData({ title, subtitle, data }: Props) {
+export default function StatisticsData({ title, subtitle, data }: Props) {
     return (
         <div className={style.card}>
 			<h3 className={style.h3}>
