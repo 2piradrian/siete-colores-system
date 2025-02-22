@@ -1,3 +1,4 @@
+import { priceFormatter } from "../../../core/utils/formatter";
 import { allProducts, ProductEntity } from "../../../domain";
 import { Table } from "../table/table";
 import style from "./style.module.css";
@@ -12,7 +13,11 @@ export default function ProductsList({products, onRowClick}: Props) {
         <div className={`${style.container} table`}>
             <Table
                 table={allProducts}
-                content={products} 
+                content={products.map((product) => ({
+                    ...product,
+                    price: priceFormatter(product.price),
+                    offertPrice: product.offertPrice ? priceFormatter(product.offertPrice) : undefined,
+                }))} 
                 onClick={onRowClick}
             />
         </div>

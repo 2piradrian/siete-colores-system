@@ -21,14 +21,22 @@ export default function BudgetEditor({ products, budget, addProduct, subtractPro
 			<div className={style.tablesContainer}>
 				<div className={`${style.tableContainer} table`}>
 					<Table 
-						content={products} 
+						content={products.map((product) => ({
+							...product,
+							price: priceFormatter(product.price),
+							offertPrice: product.offertPrice ? priceFormatter(product.offertPrice) : undefined,
+						}))} 
 						table={reducedProducts} 
 						onClick={(code: string) => addProduct(code)} 
 					/>
 				</div>
 				<div className={`${style.tableContainer} table`}>
 					<Table 
-						content={budget.products} 
+						content={budget.products.map((product) => ({
+							...product,
+							price: priceFormatter(product.price),
+							quantityPrice: priceFormatter(product.quantityPrice),
+						}))} 
 						table={budgetProducts} 
 						onClick={(code: string) => subtractProduct(code)} 
 					/>
