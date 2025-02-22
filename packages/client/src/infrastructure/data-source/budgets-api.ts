@@ -11,9 +11,7 @@ export class BudgetsApiDataSource implements BudgetsDataSourceI {
 
     public async getBudgets(): Promise<BudgetEntity[]> {
         try {
-            const response = await this.httpClient.get("/budgets/get-all");
-
-            return response;
+            return await this.httpClient.get("/budgets/get-all");
         }
         catch (error) {
             throw new Error("Error obteniendo los presupuestos: " + error);
@@ -23,9 +21,7 @@ export class BudgetsApiDataSource implements BudgetsDataSourceI {
 
     public async getBudget(id: string): Promise<BudgetEntity> {
         try {
-            const response = await this.httpClient.get("/budgets/get-by-id", { id: id});
-
-            return response;
+            return await this.httpClient.get("/budgets/get-by-id", { id: id});
         }
         catch (error) {
             throw new Error("Error buscando el presupuesto: " + error);

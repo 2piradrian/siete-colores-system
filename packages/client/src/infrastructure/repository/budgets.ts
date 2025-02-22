@@ -11,9 +11,7 @@ export class BudgetsRepository implements BudgetsRepositoryI {
 
     public async getBudgets(): Promise<BudgetEntity[]> {
         try {
-            const response = await this.dataSource.getBudgets();
-
-            return response;
+            return await this.dataSource.getBudgets();
         }
         catch (error) {
             throw error;
@@ -22,9 +20,7 @@ export class BudgetsRepository implements BudgetsRepositoryI {
 
     public async getBudget(id: string): Promise<BudgetEntity> {
         try {
-            const response = await this.dataSource.getBudget(id);
-
-            return response;
+            return await this.dataSource.getBudget(id);
         }
         catch (error) {
             throw error;

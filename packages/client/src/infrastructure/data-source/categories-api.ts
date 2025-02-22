@@ -11,9 +11,7 @@ export class CategoriesApiDataSource implements CategoriesDataSourceI {
 
     public async getCategories(): Promise<CategoryEntity[]> {
         try {
-            const response = await this.httpClient.get("/categories/get-all");
-
-            return response;
+            return await this.httpClient.get("/categories/get-all");
         }
         catch (error) {
             throw new Error("Error obteniendo las categorías: " + error);

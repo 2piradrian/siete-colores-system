@@ -11,9 +11,7 @@ export class CategoriesRepository implements CategoriesRepositoryI {
 
     public async getCategories(): Promise<CategoryEntity[]> {
         try {
-            const response = await this.dataSource.getCategories();
-
-            return response;
+            return await this.dataSource.getCategories();
         }
         catch (error) {
             throw error;

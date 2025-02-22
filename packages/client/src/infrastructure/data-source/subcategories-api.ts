@@ -11,9 +11,7 @@ export class SubCategoriesApiDataSource implements SubCategoriesDataSourceI {
 
     public async getSubCategories(): Promise<SubCategoryEntity[]> {
         try {
-            const response = await this.httpClient.get("/subcategories/get-all");
-
-            return response;
+            return await this.httpClient.get("/subcategories/get-all");
         }
         catch (error) {
             throw new Error("Error obteniendo las categorías: " + error);

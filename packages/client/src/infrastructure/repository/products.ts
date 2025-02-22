@@ -11,9 +11,7 @@ export class ProductsRepository implements ProductsRepositoryI {
 
     public async getProducts(): Promise<ProductEntity[]> {
         try {
-            const response = await this.dataSource.getProducts();
-
-            return response;
+            return await this.dataSource.getProducts();
         }
         catch (error) {
             throw error;
@@ -22,9 +20,7 @@ export class ProductsRepository implements ProductsRepositoryI {
 
     public async getProductByCode(code: string): Promise<ProductEntity> {
         try {
-            const response = await this.dataSource.getProductByCode(code);
-
-            return response;
+            return await this.dataSource.getProductByCode(code);
         }
         catch (error) {
             throw error;

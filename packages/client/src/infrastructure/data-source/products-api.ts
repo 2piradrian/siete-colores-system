@@ -11,9 +11,7 @@ export class ProductsApiDataSource implements ProductsDataSourceI {
 
     public async getProducts(): Promise<ProductEntity[]> {
         try {
-            const response = await this.httpClient.get("/products/get-all");
-
-            return response;
+            return await this.httpClient.get("/products/get-all");
         }
         catch (error) {
             throw new Error("Error obteniendo los productos: " + error);
@@ -23,9 +21,7 @@ export class ProductsApiDataSource implements ProductsDataSourceI {
 
     public async getProductByCode(code: string): Promise<ProductEntity> {
         try {
-            const response = await this.httpClient.get("/products/get-by-code", { code: code });
-
-            return response;
+            return await this.httpClient.get("/products/get-by-code", { code: code });
         }
         catch (error) {
             throw new Error("Error buscando el producto: " + error);

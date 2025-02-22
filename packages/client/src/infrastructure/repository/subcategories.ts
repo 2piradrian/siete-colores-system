@@ -11,9 +11,7 @@ export class SubCategoriesRepository implements SubCategoriesRepositoryI {
 
     public async getSubCategories(): Promise<SubCategoryEntity[]> {
         try {
-            const response = await this.dataSource.getSubCategories();
-
-            return response;
+            return await this.dataSource.getSubCategories();
         }
         catch (error) {
             throw error;
