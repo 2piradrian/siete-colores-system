@@ -36,17 +36,18 @@ export default function ProductEditor() {
                             onRemoveSubcategory={onRemoveSubcategory}
                             onSubmit={(e) => {
                                 if (product?.code) {
-                                    updateProduct(e).then(() => {navigate("/categories/list")});
+                                    console.log("updateProduct", product);
+                                    updateProduct(e).then(() => {navigate("/products")});
                                 }
                                 else {
-                                    createProduct(e).then(() => {navigate("/categories/list")});
+                                    createProduct(e).then(() => {navigate("/products")});
                                 }
                             }}
                             onCancel={() => {
-                                navigate("/categories")
+                                navigate("/products")
                             }}
                             onDelete={() => {
-                                deleteProduct().then(() => { navigate("/categories/list"); })
+                                deleteProduct().then(() => { navigate("/categories"); })
                             }}
                         />
                     </>

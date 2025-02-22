@@ -17,7 +17,7 @@ export default function useViewModel() {
     /* --- ----- --- */
 
     useEffect(() => {
-            fetch();
+        fetch();
     }, [code]);
 
     const onAddSubcategory = (subcategory: string) => {
@@ -34,10 +34,10 @@ export default function useViewModel() {
         try {
             setLoading(true);
 
-            if (code === "") {
+            if (code !== "") {
                 const productFetched = await productsRepository.getProductByCode(code) || undefined;
                 setProduct(productFetched);
-                return;
+                setSelectedSubCategories(productFetched?.subcategories || []);
             }
             else {
                 setProduct(undefined);
@@ -72,12 +72,12 @@ export default function useViewModel() {
 
             await productsRepository.createProduct(product);
             
-            alert("Categoría actualizada con éxito");
+            alert("Producto creado con éxito");
             return Promise.resolve();
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al actualizar la categoría");
+            alert("Ha ocurrido un error al crear el producto");
             return Promise.reject();
         }
     }
@@ -95,14 +95,16 @@ export default function useViewModel() {
                 subcategories: selectedSubcategories
             });
 
+            console.log(product);
+
             await productsRepository.updateProduct(product);
             
-            alert("Categoría actualizada con éxito");
+            alert("Producto actualizado con éxito");
             return Promise.resolve();
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al actualizar la categoría");
+            alert("Ha ocurrido un error al crear el producto");
             return Promise.reject();
         }
     };
