@@ -26,7 +26,7 @@ app.whenReady().then(() => {
     }
   });
 
-  window.loadURL("http://localhost:5173");
+  setTimeout(() => window.loadURL("http://localhost:5173"), 5000);
 
   window.on("closed", () => {
     window = null;
@@ -35,7 +35,7 @@ app.whenReady().then(() => {
 
 });
 
-//app.on("window-all-closed", () => {
-//  if (serverProcess) serverProcess.kill();
-//  if (process.platform !== "darwin") app.quit();
-//});
+app.on("window-all-closed", () => {
+  if (serverProcess) serverProcess.kill();
+  if (process.platform !== "darwin") app.quit();
+});
