@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Title } from "../components/atoms";
+import Title from "../components/title/title";
 
 type Props = {
     children: ReactNode;

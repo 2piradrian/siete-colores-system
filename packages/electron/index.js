@@ -35,7 +35,7 @@ app.whenReady().then(() => {
 
 });
 
-app.on("window-all-closed", () => {
-  if (serverProcess) serverProcess.kill();
-  if (process.platform !== "darwin") app.quit();
-});
+//app.on("window-all-closed", () => {
+//  if (serverProcess) serverProcess.kill();
+//  if (process.platform !== "darwin") app.quit();
+//});
