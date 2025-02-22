@@ -1,14 +1,8 @@
-.container {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
+.h1 {
+	font-size: 58px;
 }
 
-.subtitle {
-	width: 100%;
+.h3 {
 	margin: 10px;
 }
 
@@ -17,16 +11,9 @@
 	font-weight: 400;
 }
 
-.stats {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-.statsContainer {
+.container {
 	width: 100%;
+	height: 100%;
 	padding: 20px;
 	display: flex;
 	justify-content: center;
