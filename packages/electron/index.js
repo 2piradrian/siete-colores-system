@@ -20,6 +20,8 @@ app.whenReady().then(() => {
     height: 720,
     minWidth: 1280,
     minHeight: 720,
+    title: "Siete Colores",
+    icon: path.join(__dirname, "../assets/favicon.ico"),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true
