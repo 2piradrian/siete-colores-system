@@ -15,8 +15,8 @@ export default function BudgetEditor({ products, budget, addProduct, subtractPro
 	return (
 		<section className={style.container}>
 			<div className={style.amount}>
-				<p>Sub-Total: $ {priceFormatter(budget.subtotal)}</p>
-				<p>Total: $ {priceFormatter(budget.total)}</p>
+				<p>Sub-Total: {priceFormatter(budget.subtotal)}</p>
+				<p>Total: {priceFormatter(budget.total)}</p>
 			</div>
 			<div className={style.tablesContainer}>
 				<div className={`${style.tableContainer} table`}>
