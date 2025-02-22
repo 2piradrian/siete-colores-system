@@ -8,7 +8,7 @@ export default function Sidebar() {
 	const [state, setState] = useState<boolean>(false);
 
 	return (
-		<div className={style.container} style={{ width: `${state ? "180px" : "50px"}` }}>
+		<div className={style.container} style={{ width: `${state ? "220px" : "50px"}` }}>
 			<nav className={style.sidebar}>
 				{state ? (
 					<AiOutlineClose onClick={() => setState(!state)} />
