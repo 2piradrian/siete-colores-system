@@ -92,7 +92,8 @@ export default function useViewModel() {
                 price: Number(form.price),
                 offertPrice: form.offertPrice ? Number(form.offertPrice) : undefined,
                 available: form.available === "Disponible" ? true : false,
-                subcategories: selectedSubcategories
+                subcategories: selectedSubcategories,
+                keywords: (form.keywords as string).split(" ")
             });
 
             console.log(product);
@@ -104,7 +105,7 @@ export default function useViewModel() {
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al crear el producto");
+            alert("Ha ocurrido un error al actualizar el producto");
             return Promise.reject();
         }
     };

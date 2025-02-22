@@ -39,6 +39,8 @@ export class ProductService {
         try {
             const product = ProductEntity.fromObject(dto);
 
+            console.log(product);
+
             return await this.repository.update(product);
         }
         catch(error){

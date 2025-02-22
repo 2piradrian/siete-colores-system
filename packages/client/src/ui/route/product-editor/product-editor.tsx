@@ -47,7 +47,7 @@ export default function ProductEditor() {
                                 navigate("/products")
                             }}
                             onDelete={() => {
-                                deleteProduct().then(() => { navigate("/categories"); })
+                                deleteProduct().then(() => { navigate("/products"); })
                             }}
                         />
                     </>

@@ -41,7 +41,7 @@ export class UpdateProductDTO {
         if (!TypeChecker.areStrings([data.code, data.name, data.size, data.category, data.description])) {
             return [ErrorType.InvalidFields];
         }
-        if (!Array.isArray(data.keywords) || !TypeChecker.areStrings(data.keywords)) {
+        if (!Array.isArray(data.keywords)) {
             return [ErrorType.InvalidFields];
         }
 
