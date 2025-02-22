@@ -1,3 +1,4 @@
+import { priceFormatter } from "../../../core/utils/formatter";
 import { BudgetEntity, budgetProducts, ProductEntity, reducedProducts } from "../../../domain";
 import { Table } from "../table/table";
 import style from "./style.module.css";
@@ -14,8 +15,8 @@ export default function BudgetEditor({ products, budget, addProduct, subtractPro
 	return (
 		<section className={style.container}>
 			<div className={style.amount}>
-				<p>Sub-Total: $ {budget.subtotal}</p>
-				<p>Total: $ {budget.total}</p>
+				<p>Sub-Total: $ {priceFormatter(budget.subtotal)}</p>
+				<p>Total: $ {priceFormatter(budget.total)}</p>
 			</div>
 			<div className={style.tablesContainer}>
 				<div className={`${style.tableContainer} table`}>
