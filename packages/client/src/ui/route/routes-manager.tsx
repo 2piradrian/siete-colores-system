@@ -26,7 +26,7 @@ export default function RoutesManager() {
 
                 <Route path="/subcategories" element={<SubCategoriesRoute />}/>
 
-                <Route path="/percent" element={<PercentRoute />} />
+                <Route path="/percents" element={<PercentRoute />} />
 
                 <Route path="*" element={<HomeRoute />} />
             </Routes>
