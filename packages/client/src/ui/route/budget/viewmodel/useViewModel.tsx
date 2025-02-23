@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useRepositories } from "../../../../core";
 import { BudgetEntity, ProductEntity } from "../../../../domain";
 
 export default function useViewModel() {
 
-    const { code = "" } = useParams();
     const { productsRepository } = useRepositories();
     
     /* --- States --- */
@@ -16,19 +14,11 @@ export default function useViewModel() {
 
     useEffect(() => {
         fetch();
-    }, [code]);
+    }, []);
 
 	useEffect(() => {
-        if (products) {
-            const subtotal = budget.products.reduce((acc, product) => acc + product.price, 0);
-            const total = subtotal - (subtotal * budget.discount / 100);
-
-            setBudget({
-                ...budget,
-                subtotal,
-                total
-            });
-        }
+        const { subtotal, total } = getAmount();
+        setBudget({ ...budget, subtotal, total });
 	}, [budget.products, budget.discount]);
 
     const fetch = async () => {
@@ -45,6 +35,22 @@ export default function useViewModel() {
             alert("Ha ocurrido un error al cargar los productos");
         }
     };
+
+    const getAmount = () => {
+		let subtotal = 0;
+		let total = 0;
+		budget.products.map((product) => {
+			subtotal += product.quantityPrice;
+		});
+
+		subtotal = parseFloat(subtotal.toFixed(2));
+		total = parseFloat((subtotal - (subtotal * (budget.discount / 100))).toFixed(2));
+
+		budget.subtotal = subtotal;
+		budget.total = total;
+		
+		return { subtotal, total };
+	};
 
     const setClientAndDiscount = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
