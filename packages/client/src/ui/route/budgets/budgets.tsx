@@ -15,7 +15,7 @@ export default function BudgetsRoute() {
         {!loading && budgets &&
           <BudgetList 
             budgets={budgets} 
-            onRowClick={(id: string) => {navigate(`/budget/${id}`)}}
+            onRowClick={(id: string) => {navigate(`/budget-detail/${id}`)}}
           />
         }
       </ContainerLayout>
