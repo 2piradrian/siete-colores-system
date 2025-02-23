@@ -39,13 +39,14 @@ else {
       icon: path.join(__dirname, "assets", "icon.svg"),
       webPreferences: {
         nodeIntegration: false,
-        contextIsolation: true
+        contextIsolation: true,
       }
     });
 
+    window.webContents.openDevTools();
+
     if (app.isPackaged) {
-      const indexFilePath = path.join(__dirname, "client", "index.html");
-      window.loadURL(`file://${indexFilePath}`);
+      window.loadFile(path.join(__dirname, "client", "index.html"));
     } 
     else {
       setTimeout(() => window.loadURL("http://localhost:5173"), 5000);
