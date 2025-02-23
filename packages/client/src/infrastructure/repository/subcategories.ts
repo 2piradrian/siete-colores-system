@@ -18,18 +18,18 @@ export class SubCategoriesRepository implements SubCategoriesRepositoryI {
         }
     }
 
-    public async createSubCategory(category: string): Promise<void> {
+    public async createSubCategory(subCategory: SubCategoryEntity): Promise<void> {
         try {
-            await this.dataSource.createSubCategory(category);
+            await this.dataSource.createSubCategory(subCategory);
         }
         catch (error) {
             throw error;
         }
     }
 
-    public async deleteSubCategory(name: string): Promise<void> {
+    public async deleteSubCategory(subCategory: SubCategoryEntity): Promise<void> {
         try {
-            await this.dataSource.deleteSubCategory(name);
+            await this.dataSource.deleteSubCategory(subCategory);
         }
         catch (error) {
             throw error;

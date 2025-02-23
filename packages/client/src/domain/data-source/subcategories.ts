@@ -1,7 +1,7 @@
-import { SubCategory } from "../types/subcategory";
+import { SubCategoryEntity } from "../entity/subcategory";
 
 export abstract class SubCategoriesDataSourceI {
-    abstract getSubCategories(): Promise<SubCategory[]>;
-    abstract createSubCategory(subcategory: string): Promise<void>;
-    abstract deleteSubCategory(name: string): Promise<void>;
+    abstract getSubCategories(): Promise<SubCategoryEntity[]>;
+    abstract createSubCategory(subCategory: SubCategoryEntity): Promise<void>;
+    abstract deleteSubCategory(subCategory: SubCategoryEntity): Promise<void>;
 }

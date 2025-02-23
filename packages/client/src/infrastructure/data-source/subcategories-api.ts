@@ -19,18 +19,18 @@ export class SubCategoriesApiDataSource implements SubCategoriesDataSourceI {
 
     }
 
-    public async createSubCategory(name: string): Promise<void> {
+    public async createSubCategory(subCategory: SubCategoryEntity): Promise<void> {
         try {
-            await this.httpClient.post("/subcategories/create", { name });
+            await this.httpClient.post("/subcategories/create", subCategory);
         }
         catch (error) {
             throw new Error("Error creando la categoría: " + error);
         }
     }
 
-    public async deleteSubCategory(name: string): Promise<void> {
+    public async deleteSubCategory(subCategory: SubCategoryEntity): Promise<void> {
         try {
-            await this.httpClient.delete("/subcategories/delete", { name });
+            await this.httpClient.delete("/subcategories/delete", subCategory);
         }
         catch (error) {
             throw new Error("Error eliminando la categoría: " + error);

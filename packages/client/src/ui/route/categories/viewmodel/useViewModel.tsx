@@ -26,7 +26,7 @@ export default function useViewModel() {
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al cargar los productos");
+            alert("Ha ocurrido un error al cargar las categorías");
         }
     };
 
@@ -43,6 +43,7 @@ export default function useViewModel() {
             await categoriesRepository.createCategory(category);
 
             alert("Categoría creada con éxito");
+            fetch();
             return Promise.resolve();
         }
         catch (error) {

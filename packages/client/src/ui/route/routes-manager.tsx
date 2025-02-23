@@ -6,6 +6,7 @@ import BudgetRoute from "./budget/budget";
 import BudgetsRoute from "./budgets/budgets";
 import BudgetDetail from "./budget-detail/budget-detail";
 import { CategoriesRoute } from "./categories/categories";
+import { SubCategoriesRoute } from "./subcategories/subcategories";
 
 export default function RoutesManager() {
     return(
@@ -21,6 +22,8 @@ export default function RoutesManager() {
                 <Route path="/budget-detail/:id" element={<BudgetDetail />}/>
 
                 <Route path="/categories" element={<CategoriesRoute />}/>
+
+                <Route path="/subcategories" element={<SubCategoriesRoute />}/>
 
                 <Route path="*" element={<HomeRoute />} />
             </Routes>
