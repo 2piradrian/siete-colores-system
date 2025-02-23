@@ -17,3 +17,8 @@ export const allBudgets = [
     ["Cliente", "Fecha", "Total"], 
     ["client", "date", "total"]
 ];
+
+export const allCategories = [
+    ["Categoría"],
+    ["name"]
+];

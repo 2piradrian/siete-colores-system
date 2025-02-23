@@ -18,7 +18,7 @@ export class CategoriesRepository implements CategoriesRepositoryI {
         }
     }
 
-    public async createCategory(category: string): Promise<void> {
+    public async createCategory(category: CategoryEntity): Promise<void> {
         try {
             await this.dataSource.createCategory(category);
         }
@@ -27,9 +27,9 @@ export class CategoriesRepository implements CategoriesRepositoryI {
         }
     }
 
-    public async deleteCategory(name: string): Promise<void> {
+    public async deleteCategory(category: CategoryEntity): Promise<void> {
         try {
-            await this.dataSource.deleteCategory(name);
+            await this.dataSource.deleteCategory(category);
         }
         catch (error) {
             throw error;

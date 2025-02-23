@@ -4,7 +4,7 @@ import { BudgetEntity, ProductEntity } from "../../../../domain";
 
 export default function useViewModel() {
 
-    const { productsRepository } = useRepositories();
+    const { productsRepository, budgetsRepository } = useRepositories();
     
     /* --- States --- */
     const [loading, setLoading] = useState<boolean>(true);
@@ -71,7 +71,7 @@ export default function useViewModel() {
 
     const createBudget = async (): Promise<void> => {
         try {
-            
+            await budgetsRepository.createBudget(budget);
             alert("Presupuesto creado con éxito");
             return Promise.resolve();
         }

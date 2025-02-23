@@ -19,18 +19,18 @@ export class CategoriesApiDataSource implements CategoriesDataSourceI {
 
     }
 
-    public async createCategory(name: string): Promise<void> {
+    public async createCategory(category: CategoryEntity): Promise<void> {
         try {
-            await this.httpClient.post("/categories/create", { name });
+            await this.httpClient.post("/categories/create", category);
         }
         catch (error) {
             throw new Error("Error creando la categoría: " + error);
         }
     }
 
-    public async deleteCategory(name: string): Promise<void> {
+    public async deleteCategory(category: CategoryEntity): Promise<void> {
         try {
-            await this.httpClient.delete("/categories/delete", { name });
+            await this.httpClient.delete("/categories/delete", category);
         }
         catch (error) {
             throw new Error("Error eliminando la categoría: " + error);
