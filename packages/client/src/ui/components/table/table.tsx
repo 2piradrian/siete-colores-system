@@ -8,7 +8,7 @@ type Props = {
 	onClick: (id: string) => void;
 };
 
-export function Table({ content, onClick, table }: Props) {
+export default function Table({ content, onClick, table }: Props) {
 	
 	return (
 		<table className={style.table}>

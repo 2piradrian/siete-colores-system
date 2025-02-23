@@ -1,6 +1,6 @@
-import { priceFormatter } from "../../../core/utils/formatter";
+import { priceFormatter } from "../../../core";
 import { BudgetEntity, budgetProducts, ProductEntity, reducedProducts } from "../../../domain";
-import { Table } from "../table/table";
+import Table from "../table/table";
 import style from "./style.module.css";
 
 type Props = {

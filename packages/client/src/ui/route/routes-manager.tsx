@@ -3,6 +3,7 @@ import HomeRoute from "./home/home-route";
 import ProductsRoute from "./products/products-route";
 import ProductEditor from "./product-editor/product-editor";
 import BudgetRoute from "./budget/budget";
+import BudgetsRoute from "./budgets/budgets";
 
 export default function RoutesManager() {
     return(
@@ -14,9 +15,9 @@ export default function RoutesManager() {
                 <Route path='/products/:code' element={<ProductEditor />}/>
 
                 <Route path="/budget" element={<BudgetRoute />}/>
+                <Route path="/budgets" element={<BudgetsRoute />}/>
 
                 <Route path="*" element={<HomeRoute />} />
-            
             </Routes>
         </BrowserRouter>
     )
