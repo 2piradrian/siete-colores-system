@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import BudgetList from "../../components/budget-list/budget-list";
 import { AppLayout, ContainerLayout } from "../../layout";
 import useViewModel from "./viewmodel/useViewModel";
+import { BudgetEntity } from "../../../domain";
 
 export default function BudgetsRoute() {
 
@@ -15,7 +16,7 @@ export default function BudgetsRoute() {
         {!loading && budgets &&
           <BudgetList 
             budgets={budgets} 
-            onRowClick={(id: string) => {navigate(`/budget-detail/${id}`)}}
+            onRowClick={(budget: BudgetEntity) => {navigate(`/budget-detail/${budget.id}`)}}
           />
         }
       </ContainerLayout>

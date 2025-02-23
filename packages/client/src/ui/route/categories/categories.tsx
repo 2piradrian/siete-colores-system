@@ -18,8 +18,8 @@ export function CategoriesRoute() {
                     <div className={`${style.container} table`}>
                         <Table 
                             content={categories}
-                            onClick={(name: string) => {
-                                deleteCategory(CategoryEntity.fromObject({ name }));
+                            onClick={(category: CategoryEntity) => {
+                                deleteCategory(category);
                             }}
                             table={allCategories}
                         />

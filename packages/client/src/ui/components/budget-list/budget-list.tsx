@@ -5,7 +5,7 @@ import style from "./style.module.css";
 
 type Props = {
 	budgets: BudgetEntity[];
-	onRowClick: (id: string) => void;
+	onRowClick: (budget: BudgetEntity) => void;
 }
 
 export default function BudgetList({ budgets, onRowClick }: Props) {

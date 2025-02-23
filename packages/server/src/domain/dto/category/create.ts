@@ -8,6 +8,8 @@ export class CreateCategoryDTO {
 
     static create(data: {[key: string]: any}): [string?, CreateCategoryDTO?] {
 
+        console.log(data);
+
         if (!TypeChecker.areDefined([data.name])) {
             return [ErrorType.MissingFields];
         }

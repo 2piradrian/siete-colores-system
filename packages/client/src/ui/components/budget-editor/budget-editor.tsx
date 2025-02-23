@@ -1,5 +1,5 @@
 import { priceFormatter } from "../../../core";
-import { BudgetEntity, budgetProducts, ProductEntity, reducedProducts } from "../../../domain";
+import { BudgetEntity, BudgetProductEntity, budgetProducts, ProductEntity, reducedProducts } from "../../../domain";
 import Table from "../table/table";
 import style from "./style.module.css";
 
@@ -38,7 +38,7 @@ export default function BudgetEditor({ products, budget, addProduct, subtractPro
 							quantityPrice: priceFormatter(product.quantityPrice),
 						}))} 
 						table={budgetProducts} 
-						onClick={(code: string) => subtractProduct(code)} 
+						onClick={(product: BudgetProductEntity) => subtractProduct(product.code)} 
 					/>
 				</div>
 			</div>

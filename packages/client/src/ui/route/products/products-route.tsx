@@ -4,6 +4,7 @@ import SearchProducts from "../../components/search-products/search-products";
 import ProductsList from "../../components/product-list/products-list";
 import FAButton from "../../components/fa-button/fa-button";
 import useViewModel from "./viewmodel/useViewModel";
+import { ProductEntity } from "../../../domain";
 
 export default function ProductsRoute() {
 
@@ -19,7 +20,7 @@ export default function ProductsRoute() {
                         <SearchProducts onSubmit={searchProducts}/>
                         <ProductsList
                             products={products} 
-                            onRowClick={(code: string) => {navigate(`/products/${code}`)}}
+                            onRowClick={(product: ProductEntity) => {navigate(`/products/${product.code}`)}}
                         />
                     </>
                     )

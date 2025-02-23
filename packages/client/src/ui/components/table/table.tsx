@@ -5,9 +5,10 @@ import style from "./style.module.css";
 type Props = {
 	content: any[];
 	table: string[][];
-	onClick: (id: string) => void;
+	onClick: (row: any) => void;
 };
 
+/* The div with classname 'table' is not here because it's not used for all tables */
 export default function Table({ content, onClick, table }: Props) {
 	
 	return (
@@ -19,8 +20,8 @@ export default function Table({ content, onClick, table }: Props) {
 						content={
 							table[1].map((param) => row[param])
 						} 
-						onClick={() => onClick(row.code || row.id)} 
-						key={row.code || row.id} 
+						onClick={() => onClick(content)} 
+						key={row.code || row.id || JSON.stringify(row)} 
 					/>
 				))}
 			</tbody>

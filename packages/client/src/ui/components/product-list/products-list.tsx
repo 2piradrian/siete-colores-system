@@ -5,7 +5,7 @@ import style from "./style.module.css";
 
 type Props = {
     products: ProductEntity[];
-    onRowClick: (code: string) => void;
+    onRowClick: (product: ProductEntity) => void;
 };
 
 export default function ProductsList({products, onRowClick}: Props) {
