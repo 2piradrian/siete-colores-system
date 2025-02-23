@@ -7,10 +7,11 @@
     "packages/electron"
   ],
   "scripts": {
-    "dev": "concurrently \" npm run dev --workspace=server\" \"npm run dev --workspace=client\" \" npm run start --workspace=electron\""
+    "dev": "concurrently \"npm run dev --workspace=server\" \"npm run dev --workspace=client\" \"npm run start --workspace=electron\"",
+    "build": "npm run build --workspace=client && npm run build --workspace=server && npm run build --workspace=electron"
   },
   "dependencies": {
-    "electron": "^1.0.0"
+    "electron": "^34.0.0"
   },
   "devDependencies": {
     "concurrently": "^7.0.0",

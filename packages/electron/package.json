@@ -2,14 +2,47 @@
   "name": "electron",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "start": "electron ."
+  "author": {
+    "name": "2piradrian"
   },
-  "keywords": [],
-  "author": "2piradrian",
-  "license": "ISC",
-  "description": "",
+  "description": "system",
+  "scripts": {
+    "start": "electron .",
+    "build": "npm run prebuild && electron-builder",
+    "prebuild": "npm run build:client && npm run build:server",
+    "build:client": "npm run build --workspace=client",
+    "build:server": "npm run build --workspace=server"
+  },
+  "build": {
+    "appId": "com.twopiradrian.siete-colores",
+    "productName": "Siete Colores",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.js",
+      "client/**/*",
+      "server/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "../client/dist",
+        "to": "client"
+      },
+      {
+        "from": "../server/dist",
+        "to": "server"
+      }
+    ],
+    "win": {
+      "target": "portable"
+    }
+  },
   "dependencies": {
-    "electron": "34.0.0"
+  },
+  "devDependencies": {
+    "electron": "^34.0.0",
+    "electron-builder": "^24.6.0",
+    "http-server": "^14.0.0"
   }
 }
