@@ -1,0 +1,13 @@
+.hr {
+	width: 100%;
+	border: 1px solid var(--contrast);
+	opacity: 0.2;
+	margin: 10px 0px;
+}
+
+.title {
+	width: 100%;
+	font-size: 24px;
+	font-weight: 800;
+	margin-bottom: 10px;
+}
