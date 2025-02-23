@@ -20,7 +20,7 @@ export default function Table({ content, onClick, table }: Props) {
 						content={
 							table[1].map((param) => row[param])
 						} 
-						onClick={() => onClick(content)} 
+						onClick={() => onClick(row)} 
 						key={row.code || row.id || JSON.stringify(row)} 
 					/>
 				))}

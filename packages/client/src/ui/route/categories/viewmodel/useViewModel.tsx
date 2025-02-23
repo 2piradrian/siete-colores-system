@@ -33,13 +33,13 @@ export default function useViewModel() {
     const createCategory = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         try {
             e.preventDefault();
-
+            
             const form = Object.fromEntries(new FormData(e.currentTarget));
             
             const category = CategoryEntity.fromObject({
                 ...form,
             });
-
+            
             await categoriesRepository.createCategory(category);
 
             alert("Categoría creada con éxito");
@@ -54,6 +54,10 @@ export default function useViewModel() {
 
     const deleteCategory = async (category: CategoryEntity): Promise<void> => {
         try {
+            const confirmDelete = window.confirm(`¿Estás seguro de eliminar la categoría ${category.name}?`);
+            if (!confirmDelete) return;
+
+            alert(JSON.stringify(category));
             await categoriesRepository.deleteCategory(category);
             alert("Categoría eliminada con éxito");
             fetch();
