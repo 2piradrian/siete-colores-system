@@ -37,7 +37,7 @@ else {
       minWidth: 1280,
       minHeight: 720,
       title: "Siete Colores",
-      icon: path.join(__dirname, "assets", "icon.svg"),
+      icon: path.join(__dirname, "assets", "icon.ico"),
       webPreferences: {
         nodeIntegration: false,
         contextIsolation: true,

@@ -7,8 +7,8 @@
     "packages/electron"
   ],
   "scripts": {
-    "dev": "concurrently \"npm run dev --workspace=server\" \"npm run dev --workspace=client\" \"npm run start --workspace=electron\"",
-    "build": "npm run build --workspace=electron"
+    "dev": "concurrently \"npm run dev --workspace=server\" \"npm run dev --workspace=client\" \"npm run start --workspace=siete-colores\"",
+    "build": "npm run build --workspace=siete-colores"
   },
   "dependencies": {
     "electron": "^34.0.0"

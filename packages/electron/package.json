@@ -1,5 +1,6 @@
 {
-  "name": "electron",
+  "name": "siete-colores",
+  "productName": "Siete Colores",
   "version": "1.0.0",
   "main": "index.js",
   "author": {
@@ -39,7 +40,7 @@
       }
     ],
     "win": {
-      "target": "portable"
+      "target": "nsis"
     }
   },
   "dependencies": {
