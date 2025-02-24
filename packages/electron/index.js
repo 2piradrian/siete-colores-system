@@ -46,7 +46,7 @@ else {
     window.webContents.openDevTools();
 
     if (app.isPackaged) {
-      window.loadFile(path.join(__dirname, "client", "index.html"));
+      window.loadFile(path.join(process.resourcesPath, "client", "index.html"));
     } 
     else {
       setTimeout(() => window.loadURL("http://localhost:5173"), 5000);
