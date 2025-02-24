@@ -17,7 +17,7 @@ else {
     if (app.isPackaged) {
       serverProcess = spawn(
         process.execPath, 
-        [path.join(__dirname, "server", "app.js")], 
+        [path.join(process.resourcesPath, "server", "app.js")], 
         { stdio: "ignore", detached: true }
       );
     } 
