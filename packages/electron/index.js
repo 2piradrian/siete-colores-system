@@ -44,12 +44,14 @@ else {
       }
     });
 
-    if (app.isPackaged) {
-      window.loadFile(path.join(process.resourcesPath, "client", "index.html"));
-    } 
-    else {
-      setTimeout(() => window.loadURL("http://localhost:5173"), 5000);
-    }
+    setTimeout(() => {
+      if(app.isPackaged) {
+        window.loadFile(path.join(process.resourcesPath, "client", "index.html"));
+      }
+      else {
+        window.loadURL("http://localhost:5173");
+      }
+    }, 5000);
 
     app.on('second-instance', () => {
       if (window) {
