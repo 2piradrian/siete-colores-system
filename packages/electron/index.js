@@ -16,9 +16,9 @@ else {
 
     if (app.isPackaged) {
       serverProcess = spawn(
-        process.execPath, 
-        [path.join(process.resourcesPath, "server", "app.js")], 
-        { stdio: "ignore", detached: true }
+        "node", 
+        [path.join(__dirname, "server", "app.js")], 
+        { stdio: "inherit", detached: true }
       );
     } 
     else {
@@ -61,8 +61,8 @@ else {
     });
 
     window.on("closed", () => {
-      window = null;
       if (serverProcess) serverProcess.kill();
+      window = null;
     });
 
   });
