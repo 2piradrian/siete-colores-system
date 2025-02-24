@@ -1,0 +1,75 @@
+.container {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: var(--background);
+	overflow: scroll;
+	padding: 50px 0px;
+	z-index: 9999;
+}
+
+.tableContainer table {
+	width: 80vw;
+	margin: 20px 0px;
+	position: initial;
+}
+
+.tableContainer th {
+	position: initial;
+	top: initial;
+}
+
+.ammount {
+	width: 80vw;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.ammount > div {
+	width: 100%; 
+	display: flex;
+	justify-content: space-between;
+}
+
+.ammount > div > p {
+	font-size: 22px;
+	font-weight: 700;
+}
+
+.buttonContainer {
+	width: 300px;
+}
+
+@media print {
+	* {
+		height: auto !important;
+		overflow: hidden !important;
+	}
+
+	button {
+		display: none;
+	}
+
+	@page {
+		size: A4;
+		margin: 200mm 0;
+	}
+
+	.tableContainer {
+		padding: 50px 20px;
+		justify-content: flex-start;
+		page-break-after: auto;
+		overflow: visible;
+	}
+	.button {
+		display: none;
+	}
+	.total {
+		margin: 50px 30px;
+	}
+}

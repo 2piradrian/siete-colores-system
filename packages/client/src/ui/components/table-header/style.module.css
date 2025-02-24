@@ -1,0 +1,11 @@
+.tableHeader {
+	background-color: var(--main);
+	font-weight: bold;
+	padding: 8px;
+	text-align: left;
+	user-select: none;
+	overflow-x: hidden;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
