@@ -71,6 +71,10 @@ export default function useViewModel() {
 
     const createBudget = async (): Promise<void> => {
         try {
+			if (budget.client === "") {
+				alert("Debes ingresar un cliente");
+				return Promise.reject();
+			}
             await budgetsRepository.createBudget(budget);
             alert("Presupuesto creado con éxito");
             return Promise.resolve();

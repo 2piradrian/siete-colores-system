@@ -27,7 +27,7 @@ export default function BudgetEditor({ products, budget, addProduct, subtractPro
 							offertPrice: product.offertPrice ? priceFormatter(product.offertPrice) : undefined,
 						}))} 
 						table={reducedProducts} 
-						onClick={(code: string) => addProduct(code)} 
+						onClick={(product: ProductEntity) => addProduct(product.code)} 
 					/>
 				</div>
 				<div className={`${style.tableContainer} table`}>
