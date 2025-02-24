@@ -22,10 +22,11 @@ else {
       );
     } 
     else {
-      serverProcess = spawn("node", [path.join(__dirname, "../server/src/app.ts")], {
-        stdio: "ignore",
-        detached: true
-      });
+      serverProcess = spawn(
+        "node", 
+        [path.join(__dirname, "../server/src/app.ts")], 
+        { stdio: "ignore", detached: true }
+      );
     }
 
     serverProcess.unref();
@@ -42,8 +43,6 @@ else {
         contextIsolation: true,
       }
     });
-
-    window.webContents.openDevTools();
 
     if (app.isPackaged) {
       window.loadFile(path.join(process.resourcesPath, "client", "index.html"));
@@ -70,4 +69,6 @@ else {
     if (serverProcess) serverProcess.kill();
     if (process.platform !== "darwin") app.quit();
   });
+
+
 }

@@ -32,6 +32,10 @@
       {
         "from": "../server/dist",
         "to": "server"
+      },
+      {
+        "from": "../server/.env",
+        "to": "server/.env"
       }
     ],
     "win": {
