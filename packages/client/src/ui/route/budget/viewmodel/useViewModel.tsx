@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRepositories } from "../../../../core";
 import { BudgetEntity, ProductEntity } from "../../../../domain";
+import toast from "react-hot-toast";
 
 export default function useViewModel() {
 
@@ -32,7 +33,7 @@ export default function useViewModel() {
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al cargar los productos");
+            toast.error("Ha ocurrido un error al cargar los productos");
         }
     };
 
@@ -66,22 +67,22 @@ export default function useViewModel() {
             discount: parseFloat(form.discount as string)
         });
 
-        alert("Datos cargados correctamente");
+        toast.success("Datos cargados correctamente");
     };
 
     const createBudget = async (): Promise<void> => {
         try {
 			if (budget.client === "") {
-				alert("Debes ingresar un cliente");
+				toast.error("Debes ingresar un cliente");
 				return Promise.reject();
 			}
             await budgetsRepository.createBudget(budget);
-            alert("Presupuesto creado con éxito");
+            toast.success("Presupuesto creado con éxito");
             return Promise.resolve();
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al crear el presupuesto");
+            toast.error("Ha ocurrido un error al crear el presupuesto");
             return Promise.reject();
         }
     }
@@ -106,7 +107,7 @@ export default function useViewModel() {
 		else {
 			// Si el producto no existe, añádelo con cantidad inicial de 1
 			const product = products.find((product) => product.code === code);
-			if (!product) return alert("Producto no encontrado");
+			if (!product) return toast.error("Producto no encontrado");
 
 			const finalPrice = product.offertPrice || product.price;
 			const quantityProduct = {
@@ -123,7 +124,7 @@ export default function useViewModel() {
 
 	const subtractProduct = (code: string) => {
 		const existingProduct = budget.products.find((product) => product.code === code);
-		if (!existingProduct) return alert("Producto no encontrado");
+		if (!existingProduct) return toast.error("Producto no encontrado");
 
 		if (existingProduct.quantity === 1) {
 			const newProductList = budget.products.filter((product) => product.code !== code);

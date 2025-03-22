@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useRepositories } from "../../../../core";
 import { BudgetEntity } from "../../../../domain";
+import toast from "react-hot-toast";
 
 export default function useViewModel() {
 
@@ -30,7 +31,7 @@ export default function useViewModel() {
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al cargar el presupuesto");
+            toast.error("Ha ocurrido un error al cargar el presupuesto");
         }
     };
 
@@ -38,12 +39,12 @@ export default function useViewModel() {
         try {
             if (id) {
                 await budgetsRepository.deleteBudget(id);
-                alert("Presupuesto eliminado con éxito");
+                toast.success("Presupuesto eliminado con éxito");
             }
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al eliminar el presupuesto");
+            toast.error("Ha ocurrido un error al eliminar el presupuesto");
         }
     };
 

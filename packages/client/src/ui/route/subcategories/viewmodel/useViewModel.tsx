@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRepositories } from "../../../../core";
 import { CategoryEntity, SubCategoryEntity } from "../../../../domain";
+import toast from "react-hot-toast";
 
 export default function useViewModel() {
 
@@ -26,7 +27,7 @@ export default function useViewModel() {
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al cargar las subcategorías");
+            toast.error("Ha ocurrido un error al cargar las subcategorías");
         }
     };
 
@@ -42,29 +43,26 @@ export default function useViewModel() {
             
             await subCategoriesRepository.createSubCategory(subcategory);
 
-            alert("SubCategoría creada con éxito");
+            toast.success("SubCategoría creada con éxito");
             fetch();
             return Promise.resolve();
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al crear la subcategoría");
+            toast.error("Ha ocurrido un error al crear la subcategoría");
             return Promise.reject();
         }
     }
 
     const deleteSubCategory = async (subCategory: SubCategoryEntity): Promise<void> => {
         try {
-            const confirmDelete = window.confirm(`¿Estás seguro de eliminar la subcategoría ${subCategory.name}?`);
-            if (!confirmDelete) return;
-
             await subCategoriesRepository.deleteSubCategory(subCategory);
-            alert("SubCategoría eliminada con éxito");
+            toast.success("SubCategoría eliminada con éxito");
             fetch();
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al eliminar la subcategoría");
+            toast.error("Ha ocurrido un error al eliminar la subcategoría");
         }
     };
 
