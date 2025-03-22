@@ -11,7 +11,8 @@
     "build": "npm run build --workspace=siete-colores"
   },
   "dependencies": {
-    "electron": "^34.0.0"
+    "electron": "^34.0.0",
+    "react-hot-toast": "^2.5.2"
   },
   "devDependencies": {
     "concurrently": "^7.0.0",

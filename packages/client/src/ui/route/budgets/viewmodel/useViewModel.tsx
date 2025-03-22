@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRepositories } from "../../../../core";
 import { BudgetEntity } from "../../../../domain";
+import toast from "react-hot-toast";
 
 export default function useViewModel() {
 
@@ -26,7 +27,7 @@ export default function useViewModel() {
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al cargar los productos");
+            toast.error("Ha ocurrido un error al cargar los productos");
         }
     };
 

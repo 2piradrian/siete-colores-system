@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRepositories } from "../../../../core";
 import { StatisticsEntity } from "../../../../domain";
+import toast from "react-hot-toast";
 
 export default function useViewModel() {
 
@@ -30,7 +31,7 @@ export default function useViewModel() {
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al cargar las estadísticas");
+            toast.error("Ha ocurrido un error al cargar las estadísticas");
         }
     };
 

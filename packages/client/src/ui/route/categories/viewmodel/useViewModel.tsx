@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRepositories } from "../../../../core";
 import { CategoryEntity } from "../../../../domain";
+import toast from "react-hot-toast";
 
 export default function useViewModel() {
 
@@ -26,7 +27,7 @@ export default function useViewModel() {
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al cargar las categorías");
+            toast.error("Ha ocurrido un error al cargar las categorías");
         }
     };
 
@@ -42,30 +43,26 @@ export default function useViewModel() {
             
             await categoriesRepository.createCategory(category);
 
-            alert("Categoría creada con éxito");
+            toast.success("Categoría creada con éxito");
             fetch();
             return Promise.resolve();
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al crear la categoría");
+            toast.error("Ha ocurrido un error al crear la categoría");
             return Promise.reject();
         }
     }
 
     const deleteCategory = async (category: CategoryEntity): Promise<void> => {
         try {
-            const confirmDelete = window.confirm(`¿Estás seguro de eliminar la categoría ${category.name}?`);
-            if (!confirmDelete) return;
-
-            alert(JSON.stringify(category));
             await categoriesRepository.deleteCategory(category);
-            alert("Categoría eliminada con éxito");
+            toast.success("Categoría eliminada con éxito");
             fetch();
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al eliminar la categoría");
+            toast.error("Ha ocurrido un error al eliminar la categoría");
         }
     };
 

@@ -6,7 +6,7 @@ import style from "./style.module.css";
 
 export function PercentRoute() {
 
-	const { percent, calculatePercent, updatePrices } = useViewModel();
+	const { percent, calculatePercent, updatePrices, isButtonAvailable } = useViewModel();
 
 	return (
 		<AppLayout>
@@ -19,7 +19,7 @@ export function PercentRoute() {
 				<hr className={style.hr} />
 				<h2 className={style.title}>Actualizar precios</h2>
 				<UpdatePrices
-					onSubmit={updatePrices}
+					onSubmit={isButtonAvailable ? updatePrices : () => {}}
 				/>
 			</ContainerLayout>
 		</AppLayout>

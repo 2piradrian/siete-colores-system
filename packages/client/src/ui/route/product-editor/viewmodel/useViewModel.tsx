@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useRepositories } from "../../../../core";
 import { CategoryEntity, ProductEntity, SubCategoryEntity } from "../../../../domain";
+import toast from "react-hot-toast";
 
 export default function useViewModel() {
 
@@ -53,7 +54,7 @@ export default function useViewModel() {
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al cargar el producto");
+            toast.error("Ha ocurrido un error al cargar el producto");
         }
     };
 
@@ -72,12 +73,12 @@ export default function useViewModel() {
 
             await productsRepository.createProduct(product);
             
-            alert("Producto creado con éxito");
+            toast.success("Producto creado con éxito");
             return Promise.resolve();
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al crear el producto");
+            toast.error("Ha ocurrido un error al crear el producto");
             return Promise.reject();
         }
     }
@@ -96,16 +97,14 @@ export default function useViewModel() {
                 keywords: (form.keywords as string).split(" ")
             });
 
-            console.log(product);
-
             await productsRepository.updateProduct(product);
             
-            alert("Producto actualizado con éxito");
+            toast.success("Producto actualizado con éxito");
             return Promise.resolve();
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al actualizar el producto");
+            toast.error("Ha ocurrido un error al actualizar el producto");
             return Promise.reject();
         }
     };
@@ -114,12 +113,12 @@ export default function useViewModel() {
         try {
             if (code) {
                 await productsRepository.deleteProduct(code);
-                alert("Producto eliminado con éxito");
+                toast.success("Producto eliminado con éxito");
             }
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al eliminar el producto");
+            toast.error("Ha ocurrido un error al eliminar el producto");
         }
     };
 

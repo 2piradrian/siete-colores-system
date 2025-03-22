@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRepositories } from "../../../../core";
+import toast from "react-hot-toast";
 
 export default function useViewModel() {
 
@@ -7,6 +8,7 @@ export default function useViewModel() {
 
     /* --- States --- */
     const [percent, setPercent] = useState<number>(0);
+    const [isButtonAvailable, setIsButtonAvailable] = useState<boolean>(true);
     /* --- ----- --- */
 
     const calculatePercent = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -14,7 +16,8 @@ export default function useViewModel() {
 		const percentData = Object.fromEntries(new FormData(e.currentTarget));
 
 		if (!percentData.oldPrice || !percentData.newPrice) {
-			return alert("Debes llenar todos los campos");
+			toast.error("Debes llenar todos los campos");
+            return;
 		}
 
 		const oldPrice = Number(percentData.oldPrice);
@@ -36,23 +39,36 @@ export default function useViewModel() {
 
             const serie = String(form.serie);
 		    const percent = Number(form.percent);
+
+            if (!serie || !percent) {
+                toast.error("Debes llenar todos los campos");
+                return Promise.reject();
+            }
+
+            setIsButtonAvailable(false);
+            toast(`Se actualizarán los precios de la serie ${serie} en un ${percent}%. Por favor, espera un momento, es una tarea pesada.`);
             
-            alert(`Se actualizarán los precios de la serie ${serie} en un ${percent}%. Por favor, espera un momento, es una tarea pesada.`);
             await productsRepository.updateProductPrices(serie, percent);
-            
+
+            toast.success("Precios actualizados correctamente");
+
             return Promise.resolve();
         }
         catch (error) {
             console.error(error);
-            alert("Ha ocurrido un error al crear la categoría");
+            toast.error("Ha ocurrido un error al crear la categoría");
             return Promise.reject();
+        }
+        finally {
+            setIsButtonAvailable(true);
         }
     }
 
     return {
         percent,
         calculatePercent,
-        updatePrices
+        updatePrices,
+        isButtonAvailable
     };
 
 };
