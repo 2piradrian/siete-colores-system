@@ -5,16 +5,17 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsnd --respawn --clear src/app.ts",
-    "build": "rimraf ./dist && tsc",
+    "build": "rimraf ./dist && esbuild src/app.ts --bundle --platform=node --outfile=dist/app.js",
     "start": "node dist/app.js"
   },
   "keywords": [],
   "author": "2piradrian",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.11.27",
-    "@types/express": "^4.17.21",
     "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.27",
+    "esbuild": "^0.25.5",
     "rimraf": "^5.0.5",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.4.2"

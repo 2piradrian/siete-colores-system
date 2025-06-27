@@ -18,9 +18,9 @@ else {
       serverProcess = spawn(
         "node", 
         [path.join(__dirname, "server", "app.js")], 
-        { stdio: "inherit", detached: true }
+        { stdio: "inherit", detached: false }
       );
-    } 
+    }
     else {
       serverProcess = spawn(
         "node", 
