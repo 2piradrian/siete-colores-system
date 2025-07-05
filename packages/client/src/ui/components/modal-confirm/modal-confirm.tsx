@@ -4,7 +4,7 @@ import style from "./style.module.css";
 
 type Props = {
     message: string;
-    onConfirm: () => void;
+    onConfirm: () => void | Promise<void>;
     onCancel: () => void;
 };
 

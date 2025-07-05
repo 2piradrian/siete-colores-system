@@ -36,12 +36,14 @@ export default function useViewModel() {
         try {
             await budgetsRepository.deleteOlderBudgets();
             toast.success("Presupuestos antiguos eliminados correctamente");
-            setShowModal(false);
             fetch();
         }
         catch(error){
             toast.success("Presupuestos antiguos eliminados correctamente");
             fetch();
+        }
+        finally {
+            setShowModal(false);
         }
     }
     
