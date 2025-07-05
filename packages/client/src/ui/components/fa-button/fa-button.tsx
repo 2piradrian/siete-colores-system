@@ -2,7 +2,7 @@ import style from "./style.module.css";
 
 type Props = {
     onClick: () => void;
-    content: string;
+    content: any;
 }
 
 export default function FAButton({content, onClick}: Props){

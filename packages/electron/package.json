@@ -1,53 +1,53 @@
 {
-  "name": "siete-colores",
-  "productName": "Siete Colores",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": {
-    "name": "2piradrian"
-  },
-  "description": "system",
-  "scripts": {
-    "start": "electron .",
-    "build": "npm run prebuild && electron-builder",
-    "prebuild": "npm run build:client && npm run build:server",
-    "build:client": "npm run build --workspace=client",
-    "build:server": "npm run build --workspace=server"
-  },
-  "build": {
-    "appId": "com.twopiradrian.siete-colores",
-    "productName": "Siete Colores",
-    "directories": {
-      "output": "dist"
+	"name": "siete-colores",
+	"productName": "Siete Colores",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": {
+		"name": "2piradrian"
+	},
+	"description": "system",
+	"scripts": {
+		"start": "electron .",
+		"build": "npm run prebuild && electron-builder",
+		"prebuild": "npm run build:client && npm run build:server",
+		"build:client": "npm run build --workspace=client",
+		"build:server": "npm run build --workspace=server"
+	},
+	"build": {
+		"appId": "com.twopiradrian.siete-colores",
+		"productName": "Siete Colores",
+    "icon": "assets/icon.ico",
+		"directories": {
+			"output": "dist"
+		},
+		"files": [
+			"index.js",
+			"client/**/*",
+			"server/**/*"
+		],
+		"extraResources": [
+    {
+      "from": "../client/dist",
+      "to": "client"
     },
-    "files": [
-      "index.js",
-      "client/**/*",
-      "server/**/*"
-    ],
-    "extraResources": [
-      {
-        "from": "../client/dist",
-        "to": "client"
-      },
-      {
-        "from": "../server/dist",
-        "to": "server"
-      },
-      {
-        "from": "../server/.env",
-        "to": "server/.env"
-      }
-    ],
-    "win": {
-      "target": "nsis"
+    {
+      "from": "../server/dist",
+      "to": "server"
+    },
+    {
+      "from": "../server/.env",
+      "to": "server/.env"
     }
-  },
-  "dependencies": {
-  },
-  "devDependencies": {
-    "electron": "^34.0.0",
-    "electron-builder": "^24.6.0",
-    "http-server": "^14.0.0"
-  }
+  ],
+		"win": {
+			"target": "nsis"
+		}
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"electron": "34.0.0",
+		"electron-builder": "24.6.0",
+		"http-server": "^14.0.0"
+	}
 }

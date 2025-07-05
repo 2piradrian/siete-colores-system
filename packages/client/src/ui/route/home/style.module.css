@@ -12,11 +12,6 @@
 	margin: 10px;
 }
 
-.h4 {
-	font-size: 16px;
-	font-weight: 400;
-}
-
 .stats {
 	height: 100%;
 	display: flex;
@@ -33,24 +28,6 @@
 	align-items: center;
 }
 
-.card {
-	height: 200px;
-	width: 200px;
-	margin: 10px;
-	border-radius: 12px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.card > p {
-	font-size: 38px;
-	font-weight: 800;
-	margin: 10px;
-}
-
 .topContainer {
 	display: flex;
 	justify-content: center;
@@ -58,24 +35,33 @@
 	gap: 45px;
 }
 
-.top {
-	height: 200px;
-	width: 200px;
-	margin: 10px;
-	border-radius: 12px;
+.verticalCard {
+	width: 400px;
+	height: 500px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	border-radius: 12px;
 }
 
-.top ul {
-	list-style: none;
+.horizontalCard {
+	width: 850px;
+	height: 500px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	border-radius: 12px;
 }
 
-.top p {
-	font-size: 16px;
-	font-weight: 800;
-	margin: 10px;
+.chartWrapper {
+	width: 100%;
+  	background-color: #fff;
+  	padding: 16px;
+  	border-radius: 12px;
+  	box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  	margin-bottom: 24px;
 }

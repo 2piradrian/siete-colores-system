@@ -3,6 +3,7 @@ import { BudgetDataSource } from "../../domain/data-source/budget";
 import { BudgetEntity } from "../../domain/entity/budget";
 
 export class MongoBudgetDataSource implements BudgetDataSource {
+    
     public async getAll(): Promise<BudgetEntity[]> {
         try {
             const budgets = await BudgetModel.find().sort({ date: 1 }) || [];
@@ -50,4 +51,14 @@ export class MongoBudgetDataSource implements BudgetDataSource {
             throw error
         }
     }
+
+    public async deleteOlderThan(olderThan: Date): Promise<void> {
+        try {
+            await BudgetModel.deleteMany({ date: { $lt: olderThan } });
+        }
+        catch(error){
+            throw error
+        }
+    }
+
 }

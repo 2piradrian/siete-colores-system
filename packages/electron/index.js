@@ -16,16 +16,25 @@ else {
 
     if (app.isPackaged) {
       serverProcess = spawn(
-        "node", 
-        [path.join(__dirname, "server", "app.js")], 
-        { stdio: "inherit", detached: true }
+        "node",
+        [path.join(process.resourcesPath, "server", "app.js")],
+        { 
+          stdio: "inherit", 
+          detached: false, 
+          shell: true,
+          windowsHide: true, // windows only
+          env: {
+            ...process.env,
+            RESOURCES_PATH: process.resourcesPath,
+          }, 
+        }
       );
-    } 
+    }
     else {
       serverProcess = spawn(
         "node", 
         [path.join(__dirname, "../server/src/app.ts")], 
-        { stdio: "ignore", detached: true }
+        { stdio: "ignore", detached: false }
       );
     }
 

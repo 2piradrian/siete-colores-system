@@ -8,7 +8,8 @@ export default function useViewModel() {
 
     /* --- States --- */
     const [percent, setPercent] = useState<number>(0);
-    const [isButtonAvailable, setIsButtonAvailable] = useState<boolean>(true);
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [formData, setFormData] = useState<FormData | null>(null);
     /* --- ----- --- */
 
     const calculatePercent = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -30,37 +31,41 @@ export default function useViewModel() {
 		setPercent(roundedPercent);
     };
 
+    const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const form = new FormData(e.currentTarget);
+        setFormData(form);
+        setShowModal(true);
+    };
 
-    const updatePrices = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+
+    const updatePrices = async () =>{
         try {
-            e.preventDefault();
-            
-            const form = Object.fromEntries(new FormData(e.currentTarget));
+            if (!formData) return;
+
+            const form = Object.fromEntries(formData);
 
             const serie = String(form.serie);
 		    const percent = Number(form.percent);
 
             if (!serie || !percent) {
                 toast.error("Debes llenar todos los campos");
-                return Promise.reject();
+                return;
             }
 
-            setIsButtonAvailable(false);
             toast(`Se actualizarán los precios de la serie ${serie} en un ${percent}%. Por favor, espera un momento, es una tarea pesada.`);
             
             await productsRepository.updateProductPrices(serie, percent);
 
             toast.success("Precios actualizados correctamente");
-
-            return Promise.resolve();
         }
         catch (error) {
             console.error(error);
             toast.error("Ha ocurrido un error al crear la categoría");
-            return Promise.reject();
         }
         finally {
-            setIsButtonAvailable(true);
+            setShowModal(false);
+            setFormData(null);
         }
     }
 
@@ -68,7 +73,9 @@ export default function useViewModel() {
         percent,
         calculatePercent,
         updatePrices,
-        isButtonAvailable
+        handleFormSubmit,
+        showModal,
+        setShowModal,
     };
 
 };

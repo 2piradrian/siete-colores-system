@@ -48,4 +48,10 @@ export class BudgetController {
         .then(() => res.status(204).send())
         .catch(error => ErrorHandler.handle(error, res));
     }
+
+    deleteOlderThan = (req: Request, res: Response) => {
+        this.budgetService.deleteOlderThan()
+        .then(() => res.status(204).send())
+        .catch(error => ErrorHandler.handle(error, res));
+    }
 }

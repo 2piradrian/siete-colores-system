@@ -14,6 +14,8 @@ type Props = {
 
 export default function PrintTable({ budget, onPrint, onDelete, onCancel }: Props) {
 
+	console.log("Presupuesto:", budget);
+
 	return (
 		<div className={style.container}>
 			<h1>Presupuesto: Siete Colores</h1>
