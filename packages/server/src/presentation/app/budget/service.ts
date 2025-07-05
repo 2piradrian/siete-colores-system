@@ -80,4 +80,16 @@ export class BudgetService {
             throw error
         }
     }
+
+    public async deleteOlderThan() {
+        try {
+            const olderThan = new Date();
+            olderThan.setMonth(olderThan.getMonth() - 18); // 18 months ago
+            return await this.budgetRepository.deleteOlderThan(olderThan);
+        }
+        catch(error){
+            throw error;
+        }
+    }
+
 }

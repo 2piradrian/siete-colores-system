@@ -15,6 +15,7 @@ export class BudgetRoutes {
         router.post("/create", [SecretValidator.validate], controller.create)
 
         router.delete("/delete", [SecretValidator.validate], controller.delete)
+        router.delete("/delete-older-than", [SecretValidator.validate], controller.deleteOlderThan)
 
         return router
     }

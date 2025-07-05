@@ -14,25 +14,27 @@ export class StatisticsService {
         );
     }
 
-    private getMostSelled(budgets: BudgetEntity[]){
-        return budgets.reduce(
-            (acc, budget) => {
-                const product = budget.products.reduce(
-                    (acc, product) => {
-                        if (product.quantity > acc.quantity) {
-                            return product
-                        }
-                        return acc
-                    }, {code: '', quantity: 0}
-                );
+    private getMostSelled(budgets: BudgetEntity[]) {
+        const productQuantities = budgets.reduce((acc: Record<string, number>, budget) => {
+            budget.products.forEach(product => {
+                acc[product.code] = (acc[product.code] || 0) + product.quantity;
+            });
+            return acc;
+        }, {});
 
-                if (product.quantity > acc.quantity) {
-                    return product
-                }
-                return acc
-            }, {code: '', quantity: 0}
-        ).code;
+        let maxProduct = null;
+        let maxQuantity = 0;
+
+        for (const [code, quantity] of Object.entries(productQuantities)) {
+            if (quantity > maxQuantity) {
+                maxQuantity = quantity;
+                maxProduct = code;
+            }
+        }
+
+        return maxProduct;
     }
+
 
     private getTop(budgets: BudgetEntity[]){
         return budgets.reduce(

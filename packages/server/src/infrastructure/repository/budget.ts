@@ -24,4 +24,8 @@ export class BudgetRepository_I implements BudgetRepository {
         return this.dataSource.delete(id);
     }
 
+    public deleteOlderThan(olderThan: Date): Promise<void> {
+        return this.dataSource.deleteOlderThan(olderThan);
+    }
+
 }
