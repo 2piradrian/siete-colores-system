@@ -16,16 +16,23 @@ else {
 
     if (app.isPackaged) {
       serverProcess = spawn(
-        "node", 
-        [path.join(__dirname, "server", "app.js")], 
-        { stdio: "inherit", detached: false }
+        "node",
+        [path.join(process.resourcesPath, "server", "app.js")],
+        { 
+          stdio: "inherit", 
+          detached: false, 
+          env: {
+            ...process.env,
+            RESOURCES_PATH: process.resourcesPath,
+          }, 
+        }
       );
     }
     else {
       serverProcess = spawn(
         "node", 
         [path.join(__dirname, "../server/src/app.ts")], 
-        { stdio: "ignore", detached: true }
+        { stdio: "ignore", detached: false }
       );
     }
 
@@ -47,6 +54,7 @@ else {
     setTimeout(() => {
       if(app.isPackaged) {
         window.loadFile(path.join(process.resourcesPath, "client", "index.html"));
+        window.webContents.openDevTools();
       }
       else {
         window.loadURL("http://localhost:5173");
