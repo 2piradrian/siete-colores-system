@@ -3,6 +3,7 @@ import FAButton from "../../components/fa-button/fa-button";
 import BudgetForm from "../../components/budget-form/budget-form";
 import BudgetEditor from "../../components/budget-editor/budget-editor";
 import useViewModel from "./viewmodel/useViewModel";
+import { FaPlus } from "react-icons/fa";
 
 export default function BudgetRoute() {
 	
@@ -23,7 +24,7 @@ export default function BudgetRoute() {
               />
               </>
             }
-			      <FAButton content="+" onClick={createBudget}/>		  
+			      <FAButton content={<FaPlus />} onClick={createBudget}/>		  
         </ContainerLayout>
     </AppLayout>
   );

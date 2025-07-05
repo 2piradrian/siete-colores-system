@@ -45,4 +45,13 @@ export class BudgetsRepository implements BudgetsRepositoryI {
         }
     }
 
+    public async deleteOlderBudgets(): Promise<void> {
+        try {
+            await this.dataSource.deleteOlderBudgets();
+        }
+        catch (error) {
+            throw error;
+        }
+    }
+
 }

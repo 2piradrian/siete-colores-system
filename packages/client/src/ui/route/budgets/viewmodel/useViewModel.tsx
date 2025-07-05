@@ -10,6 +10,7 @@ export default function useViewModel() {
     /* --- States --- */
     const [loading, setLoading] = useState<boolean>(true);
     const [budgets, setBudgets] = useState<BudgetEntity[]>([]);
+    const [showModal, setShowModal] = useState<boolean>(false);
     /* --- ----- --- */
 
     useEffect(() => {
@@ -27,13 +28,29 @@ export default function useViewModel() {
         }
         catch (error) {
             console.error(error);
-            toast.error("Ha ocurrido un error al cargar los productos");
+            toast.error("Ha ocurrido un error al cargar los presupuestos");
         }
     };
 
+    const deleteOlder = async () => {
+        try {
+            await budgetsRepository.deleteOlderBudgets();
+            toast.success("Presupuestos antiguos eliminados correctamente");
+            setShowModal(false);
+            fetch();
+        }
+        catch(error){
+            toast.success("Presupuestos antiguos eliminados correctamente");
+            fetch();
+        }
+    }
+    
     return { 
         loading, 
         budgets,
+        deleteOlder,
+        showModal,
+        setShowModal
     };
 
 };

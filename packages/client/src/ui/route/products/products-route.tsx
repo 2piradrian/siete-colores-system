@@ -5,6 +5,7 @@ import ProductsList from "../../components/product-list/products-list";
 import FAButton from "../../components/fa-button/fa-button";
 import useViewModel from "./viewmodel/useViewModel";
 import { ProductEntity } from "../../../domain";
+import { FaPlus } from "react-icons/fa";
 
 export default function ProductsRoute() {
 
@@ -25,7 +26,7 @@ export default function ProductsRoute() {
                     </>
                     )
                 }
-    			<FAButton content="+" onClick={() => {navigate("/products/new/")}} />
+    			<FAButton content={<FaPlus />} onClick={() => {navigate("/products/new/")}} />
             </ContainerLayout>
         </AppLayout>
     );

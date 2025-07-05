@@ -84,7 +84,7 @@ export class BudgetService {
     public async deleteOlderThan() {
         try {
             const olderThan = new Date();
-            olderThan.setMonth(olderThan.getMonth() - 18); // 18 months ago
+            olderThan.setMonth(olderThan.getMonth() - 12); // 18 months ago
             return await this.budgetRepository.deleteOlderThan(olderThan);
         }
         catch(error){

@@ -46,4 +46,13 @@ export class BudgetsApiDataSource implements BudgetsDataSourceI {
         }
     }
 
+    public async deleteOlderBudgets(): Promise<void> {
+        try {
+            await this.httpClient.delete("/budgets/delete-older-than");
+        }
+        catch (error) {
+            throw new Error("Error eliminando los presupuestos: " + error);
+        }
+    }
+
 }
