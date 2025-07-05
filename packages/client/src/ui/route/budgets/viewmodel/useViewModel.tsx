@@ -22,6 +22,8 @@ export default function useViewModel() {
             setLoading(true);
 
             const budgetsFetched = await budgetsRepository.getBudgets() || [];
+            budgetsFetched.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+            
             setBudgets(budgetsFetched);
 
             setLoading(false);
