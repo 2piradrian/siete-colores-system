@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter , Route, Routes } from "react-router-dom";
 import HomeRoute from "./home/home-route";
 import ProductsRoute from "./products/products-route";
 import ProductEditor from "./product-editor/product-editor";
@@ -11,7 +11,7 @@ import { PercentRoute } from "./percent/percent";
 
 export default function RoutesManager() {
     return(
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
                 <Route path="/" element={<HomeRoute />} />
 
@@ -30,6 +30,6 @@ export default function RoutesManager() {
 
                 <Route path="*" element={<HomeRoute />} />
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     )
 };
