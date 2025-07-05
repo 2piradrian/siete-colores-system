@@ -21,6 +21,8 @@ else {
         { 
           stdio: "inherit", 
           detached: false, 
+          shell: true,
+          windowsHide: true, // windows only
           env: {
             ...process.env,
             RESOURCES_PATH: process.resourcesPath,
