@@ -55,6 +55,10 @@
 		display: none;
 	}
 
+	svg {
+		display: none;
+	}
+
 	@page {
 		size: A4;
 		margin: 200mm 0;
@@ -72,4 +76,5 @@
 	.total {
 		margin: 50px 30px;
 	}
+
 }
