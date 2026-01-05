@@ -1,13 +1,15 @@
 export class ShippingEntity {
     private constructor(
         public id: string,
-        public value: number,
+        public branch: number,
+        public home: number,
     ){}
 
     static fromObject(object: {[key: string]: any}): ShippingEntity {
         return new ShippingEntity(
             object._id || object.id,
-            object.value,
+            object.branch ?? object.value ?? 0,
+            object.home ?? 0,
         );
     }
 }

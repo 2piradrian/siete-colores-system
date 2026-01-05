@@ -17,7 +17,7 @@ export class ShippingService {
 
     public async update(dto: UpdateShippingDTO) {
         try {
-            return await this.shippingRepository.update(dto.value);
+            return await this.shippingRepository.update(dto.branch, dto.home);
         }
         catch(error){
             throw error

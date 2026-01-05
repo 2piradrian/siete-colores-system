@@ -3,19 +3,20 @@ import { ErrorType } from "../../error/error-type";
 
 export class UpdateShippingDTO {
     private constructor(
-        public value: number
+        public branch: number,
+        public home: number,
     ){}
 
     static create(data: {[key: string]: any}): [string?, UpdateShippingDTO?] {
 
-        if (!TypeChecker.areDefined([data.value])) {
+        if (!TypeChecker.areDefined([data.branch, data.home])) {
             return [ErrorType.MissingFields];
         }
 
-        if (isNaN(Number(data.value))) {
+        if (isNaN(Number(data.branch)) || isNaN(Number(data.home))) {
             return [ErrorType.InvalidFields];
         }
 
-        return [undefined, new UpdateShippingDTO(Number(data.value))];
+        return [undefined, new UpdateShippingDTO(Number(data.branch), Number(data.home))];
     }
 }
