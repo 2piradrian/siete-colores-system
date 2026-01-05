@@ -11,7 +11,9 @@
     "build": "npm run build --workspace=siete-colores"
   },
   "devDependencies": {
+    "app-builder-bin": "^4.2.0",
     "concurrently": "^7.0.0",
+    "electron-builder": "^26.0.12",
     "wait-on": "^6.0.0"
   }
 }
