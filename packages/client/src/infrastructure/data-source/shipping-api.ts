@@ -19,9 +19,9 @@ export class ShippingApiDataSource implements ShippingDataSourceI {
         }
     }
 
-    public async update(value: number): Promise<ShippingEntity> {
+    public async update(branch: number, home: number): Promise<ShippingEntity> {
         try {
-            const data = await this.httpClient.post("/shipping/update", { value });
+            const data = await this.httpClient.post("/shipping/update", { branch, home });
             return ShippingEntity.fromObject(data);
         }
         catch (error) {

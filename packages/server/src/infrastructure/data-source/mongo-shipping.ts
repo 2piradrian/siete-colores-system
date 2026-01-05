@@ -8,7 +8,7 @@ export class MongoShippingDataSource implements ShippingDataSource {
             let shipping = await ShippingModel.findOne();
             
             if (!shipping) {
-                shipping = new ShippingModel({ value: 0 });
+                shipping = new ShippingModel({ branch: 0, home: 0 });
                 await shipping.save();
             }
 
@@ -19,14 +19,15 @@ export class MongoShippingDataSource implements ShippingDataSource {
         }
     }
 
-    public async update(value: number): Promise<ShippingEntity> {
+    public async update(branch: number, home: number): Promise<ShippingEntity> {
         try {
             let shipping = await ShippingModel.findOne();
             
             if (!shipping) {
-                shipping = new ShippingModel({ value });
+                shipping = new ShippingModel({ branch, home });
             } else {
-                shipping.value = value;
+                shipping.branch = branch;
+                shipping.home = home;
             }
             
             await shipping.save();

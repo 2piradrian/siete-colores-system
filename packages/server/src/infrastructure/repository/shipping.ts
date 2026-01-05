@@ -12,8 +12,8 @@ export class ShippingRepository_I implements ShippingRepository {
         return this.dataSource.get();
     }
 
-    public update(value: number): Promise<ShippingEntity> {
-        return this.dataSource.update(value);
+    public update(branch: number, home: number): Promise<ShippingEntity> {
+        return this.dataSource.update(branch, home);
     }
 
 }

@@ -1,7 +1,12 @@
 import mongoose from "mongoose";
 
 const shippingSchema = new mongoose.Schema({
-    value: {
+    branch: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    home: {
         type: Number,
         required: true,
         default: 0

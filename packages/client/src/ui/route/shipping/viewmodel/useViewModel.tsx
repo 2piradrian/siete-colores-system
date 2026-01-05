@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { useRepositories } from "../../../../core";
+import toast from "react-hot-toast";
+import { ShippingEntity } from "../../../../domain";
 
 export default function useViewModel() {
     const { shippingRepository } = useRepositories();
     const [loading, setLoading] = useState<boolean>(true);
-    const [shippingValue, setShippingValue] = useState<number>(0);
+    const [shipping, setShipping] = useState<ShippingEntity | undefined>();
 
     useEffect(() => {
         fetch();
@@ -15,10 +16,9 @@ export default function useViewModel() {
         try {
             setLoading(true);
             const data = await shippingRepository.get();
-            setShippingValue(data.value);
+            setShipping(data);
             setLoading(false);
-        } 
-        catch (error) {
+        } catch (error) {
             console.error(error);
             toast.error("Error al cargar el precio de envío");
         }
@@ -28,18 +28,18 @@ export default function useViewModel() {
         try {
             e.preventDefault();
             const form = Object.fromEntries(new FormData(e.currentTarget));
-            const value = Number(form.value);
+            const branch = Number(form.branch);
+            const home = Number(form.home);
 
-            if (isNaN(value)) {
-                toast.error("Valor de envío inválido");
+            if (isNaN(branch) || isNaN(home)) {
+                toast.error("Valores de envío inválidos");
                 return;
             }
 
-            await shippingRepository.update(value);
-            setShippingValue(value);
-            toast.success("Precio de envío actualizado con éxito");
-        } 
-        catch (error) {
+            await shippingRepository.update(branch, home);
+            setShipping(ShippingEntity.fromObject({ ...shipping, branch, home }));
+            toast.success("Precios de envío actualizados con éxito");
+        } catch (error) {
             console.error(error);
             toast.error("Error al actualizar el precio de envío");
         }
@@ -47,7 +47,7 @@ export default function useViewModel() {
 
     return {
         loading,
-        shippingValue,
+        shipping,
         updateShipping
     };
 }
