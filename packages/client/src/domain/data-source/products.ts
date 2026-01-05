@@ -1,10 +1,10 @@
-import { Product } from "../types/product";
+import { ProductEntity } from "../entity/product";
 
 export abstract class ProductsDataSourceI {
-    abstract getProducts(): Promise<Product[]>;
-    abstract getProductByCode(code: string): Promise<Product>;
-    abstract createProduct(product: Product): Promise<void>;
-    abstract updateProduct(product: Product): Promise<void>;
+    abstract getProducts(): Promise<ProductEntity[]>;
+    abstract getProductByCode(code: string): Promise<ProductEntity>;
+    abstract createProduct(product: ProductEntity): Promise<void>;
+    abstract updateProduct(product: ProductEntity): Promise<void>;
     abstract deleteProduct(code: string): Promise<void>;
     abstract updateProductPrices(serie: string, percent: number): Promise<void>;
 }

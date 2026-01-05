@@ -8,6 +8,7 @@ import BudgetDetail from "./budget-detail/budget-detail";
 import { CategoriesRoute } from "./categories/categories";
 import { SubCategoriesRoute } from "./subcategories/subcategories";
 import { PercentRoute } from "./percent/percent";
+import { ShippingRoute } from "./shipping/shipping";
 
 export default function RoutesManager() {
     return(
@@ -27,6 +28,8 @@ export default function RoutesManager() {
                 <Route path="/subcategories" element={<SubCategoriesRoute />}/>
 
                 <Route path="/percents" element={<PercentRoute />} />
+
+                <Route path="/shipping" element={<ShippingRoute />} />
 
                 <Route path="*" element={<HomeRoute />} />
             </Routes>

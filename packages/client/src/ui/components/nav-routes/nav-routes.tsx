@@ -1,4 +1,4 @@
-import { FaBook, FaBookMedical, FaChartPie, FaClipboardList, FaListUl, FaPercent, FaSearch } from "react-icons/fa";
+import { FaBook, FaBookMedical, FaChartPie, FaClipboardList, FaListUl, FaPercent, FaSearch, FaTruck } from "react-icons/fa";
 import NavItem from "../nav-item/nav-item";
 import style from "./style.module.css";
 
@@ -16,6 +16,7 @@ export default function NavRoutes({ state }: Props) {
 			<NavItem icon={<FaClipboardList />} name="Categorias" route="/categories" state={state} />
 			<NavItem icon={<FaListUl />} name="Sub-Categorias" route="/subcategories" state={state} />
 			<NavItem icon={<FaPercent />} name="Porcentaje" route="/percents" state={state} />
+			<NavItem icon={<FaTruck />} name="Envío" route="/shipping" state={state} />
 		</div>
 	);
 }
