@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useContext, useMemo } from "react";
-import { BudgetsRepository, CategoriesRepository, ProductsRepository, StatisticsRepository, SubCategoriesRepository } from "../../infrastructure";
+import { BudgetsRepository, CategoriesRepository, ProductsRepository, ShippingRepository, StatisticsRepository, SubCategoriesRepository } from "../../infrastructure";
 
 interface RepositoriesProviderProps {
   children: ReactNode;
@@ -11,6 +11,7 @@ interface RepositoriesContextType {
   budgetsRepository: BudgetsRepository;
   subCategoriesRepository: SubCategoriesRepository;
   statisticsRepository: StatisticsRepository;
+  shippingRepository: ShippingRepository;
 }
 
 const RepositoriesContext = createContext<RepositoriesContextType | null>(null);
@@ -22,6 +23,7 @@ export const RepositoriesProvider = ({ children }: RepositoriesProviderProps) =>
     budgetsRepository: new BudgetsRepository(),
     subCategoriesRepository: new SubCategoriesRepository(),
     statisticsRepository: new StatisticsRepository(),
+    shippingRepository: new ShippingRepository(),
   }), []);
 
   return (

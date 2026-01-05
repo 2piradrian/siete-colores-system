@@ -4,6 +4,7 @@ import { BudgetRoutes } from "../app/budget/routes";
 import { StatisticsRoutes } from "../app/statistics/router";
 import { CategoryRoutes } from "../app/category/routes";
 import { SubCategoryRoutes } from "../app/subcategory/routes";
+import { ShippingRoutes } from "../app/shipping/routes";
 
 export class AppRouter {
     static get routes(): Router {
@@ -14,6 +15,7 @@ export class AppRouter {
         router.use('/api/statistics', StatisticsRoutes.routes)
         router.use('/api/categories', CategoryRoutes.routes)
         router.use('/api/subcategories', SubCategoryRoutes.routes)
+        router.use('/api/shipping', ShippingRoutes.routes)
 
         return router;
     }

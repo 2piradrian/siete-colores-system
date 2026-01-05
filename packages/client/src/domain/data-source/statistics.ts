@@ -1,5 +1,5 @@
-import { Statistics } from "../types/statistics";
+import { StatisticsEntity } from "../entity/statistics";
 
 export abstract class StatisticsDataSourceI {
-    abstract getStatistics(): Promise<Statistics>;
+    abstract getStatistics(): Promise<StatisticsEntity>;
 }
